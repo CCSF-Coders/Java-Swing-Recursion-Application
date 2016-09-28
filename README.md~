@@ -1,5 +1,6 @@
 # LabD-Team1
 Lab D: Recursion - Due Monday, October 10, 2016, 11:55 PM
+<<<<<<< 6735956d9874040946611dc48df167ae7eaae56b
 
 Write a program that uses recursion to draw squares- one square on the corner of each square. You can write an applet or a standalone GUI program. Either is fine.
 
@@ -38,3 +39,5 @@ Notes
 Note: If completing the extra credit, you do not need to do both the square version and the extra credit- you can complete only the extra credit.
 
 Sample Output
+=======
+>>>>>>> Initial commit
