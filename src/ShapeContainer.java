@@ -6,23 +6,30 @@ public class ShapeContainer {
 	private int rotation;
 	private int recurseFactor;
 	private GraphicsPolygon basePolygon;
+	enum ADIR{INC, DEC};
+	private ADIR aDir;
 	public ShapeContainer() {
 		sides = 4;
 		radius = 150;
 		rotation = 45;
 		recurseFactor = 2;
+		aDir = ADIR.DEC;
 		rebuild();
 	}
 	public void animateStep() {
-		radius = radius - 2;
-//		recurseFactor = (int)((250.0 - (double)radius) / 100.0)+2;
-		if ( radius < 0 ) {
-			radius = 150;
-			sides++;
-			if ( sides > 12 ) {
-				sides = 3;
-				radius = 150;
-				rotation = 0;
+		if ( aDir == ADIR.DEC ) {
+			radius = radius - 2;
+			if ( radius < 0 ) {
+				aDir = ADIR.INC;
+				sides++;
+				if ( sides > 12 ) {
+					sides = 3;
+				}
+			}
+		} else {
+			radius = radius + 2;
+			if ( radius > 150  ) {
+				aDir = ADIR.DEC;
 			}
 		}
 		rotation = radius;

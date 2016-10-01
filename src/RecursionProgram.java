@@ -91,7 +91,7 @@ public class RecursionProgram extends JFrame implements ActionListener {
     	buttonPane.add(chooseRotation);
     	chooseRotation.addActionListener(this);
 
-    	buttonPane.add(new JLabel("Recurse"));
+    	buttonPane.add(new JLabel("Factor"));
     	chooseRecurseFactor = new JComboBox<Integer>(new Integer[] {2,3,4,5,6,7,8});
     	buttonPane.add(chooseRecurseFactor);
     	chooseRecurseFactor.addActionListener(this);
