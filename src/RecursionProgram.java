@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
 
 @SuppressWarnings("serial")
 public class RecursionProgram extends JFrame implements ActionListener {
+	private JComboBox<String> chooseColors;
 	private JComboBox<Integer> chooseSides;
 	private JComboBox<Integer> chooseRadius;
 	private JComboBox<Integer> chooseRotation;
@@ -29,8 +30,21 @@ public class RecursionProgram extends JFrame implements ActionListener {
 		if ( e.getSource().equals(chooseSides) ) {
 			shapeContainer.setSides( ((Integer)chooseSides.getSelectedItem()).intValue() );
 		}
-		else if ( e.getSource().equals(chooseRadius) ) {
+		else if (e.getSource().equals(chooseRadius) ) {
 			shapeContainer.setRadius( ((Integer)chooseRadius.getSelectedItem()).intValue() );
+		}
+		else if(e.getSource().equals(chooseColors)){
+			String selection = (String)chooseColors.getSelectedItem();
+			System.out.println(selection);
+			if(selection.equals("Red")){
+				shapeContainer.setColor(Color.RED);
+			}
+			if(selection.equals("Green")){
+				shapeContainer.setColor(Color.GREEN);
+			}
+			if(selection.equals("Blue")){
+				shapeContainer.setColor(Color.BLUE);
+			}
 		}
 		else if ( e.getSource().equals(chooseRotation) ) {
 			shapeContainer.setRotation( ((Integer)chooseRotation.getSelectedItem()).intValue() );
@@ -75,7 +89,12 @@ public class RecursionProgram extends JFrame implements ActionListener {
          
         JPanel buttonPane = new JPanel();
         pane.add(buttonPane, BorderLayout.SOUTH);
-        
+
+        buttonPane.add(new JLabel("Color"));
+        chooseColors = new JComboBox<String>(new String[]{"Red", "Green", "Blue"});
+        buttonPane.add(chooseColors);
+        chooseColors.addActionListener(this);
+
     	buttonPane.add(new JLabel("Sides"));
     	chooseSides = new JComboBox<Integer>(new Integer[] {3,4,5,6,7,8,9,10,11,12});
     	buttonPane.add(chooseSides);
@@ -107,6 +126,7 @@ public class RecursionProgram extends JFrame implements ActionListener {
 		animation.setAnimate(false);
     }
 	private void setControls() {
+		chooseColors.setSelectedItem(shapeContainer.getColor());
 		chooseSides.setSelectedItem(shapeContainer.getSides());
 		chooseRadius.setSelectedItem(shapeContainer.getRadius());
 		chooseRotation.setSelectedItem(shapeContainer.getRotation());

@@ -1,6 +1,8 @@
 import java.awt.Graphics2D;
+import java.awt.Color;
 
 public class ShapeContainer {
+	private Color color;
 	private int sides;
 	private int radius;
 	private int rotation;
@@ -9,6 +11,7 @@ public class ShapeContainer {
 	enum ADIR{INC, DEC};
 	private ADIR aDir;
 	public ShapeContainer() {
+		color = Color.RED;
 		sides = 4;
 		radius = 150;
 		rotation = 45;
@@ -35,13 +38,19 @@ public class ShapeContainer {
 		rotation = radius;
 	}
 	public void rebuild() {
-		basePolygon = new GraphicsPolygon(sides, new Vertix(500/2, 500/2), radius, ((double)rotation)*(Math.PI*2.0)/360.0, recurseFactor);
+		basePolygon = new GraphicsPolygon(color ,sides, new Vertix(500/2, 500/2), radius, ((double)rotation)*(Math.PI*2.0)/360.0, recurseFactor);
 		new RecursePolygons().recursePolygons(basePolygon);
 
 	}
 	public void paintComponents(Graphics2D g) {
 		basePolygon.paintComponent(g);
 	}
+	public void setColor(Color color){
+		this.color = color; 
+	}
+	public Color getColor(){
+		return color;
+	}	
 	public int getSides() {
 		return sides;
 	}
