@@ -4,13 +4,16 @@ import java.awt.Polygon;
 
 public class GraphicsPolygon implements GraphicShape {
 	private final GraphicsPolygon[] vertixPolygons;
+
+	private final Color color;
 	private final Polygon polygon;
 	private final int radius, sides;
 	private final Vertix center;
 	private final double rotation;
 	private final double recursionFactor;
 
-	public GraphicsPolygon(int sides, Vertix center, int radius, double rotation, double recursionFactor) {
+	public GraphicsPolygon(Color color,int sides, Vertix center, int radius, double rotation, double recursionFactor) {
+		this.color = color;
 		this.radius = radius;
 		this.center = center;
 		this.sides = sides;
@@ -31,13 +34,16 @@ public class GraphicsPolygon implements GraphicShape {
 
 	@Override
 	public void paintComponent(Graphics2D g) {
-		g.setColor(Color.GREEN);
+		g.setColor(this.color);
 		g.fillPolygon(polygon);
 		g.setColor(Color.GRAY);
 		g.drawPolygon(polygon);
 		for ( GraphicsPolygon vertixPolygon: vertixPolygons ) {
 			if ( vertixPolygon != null ) vertixPolygon.paintComponent(g);
 		}
+	}
+	public Color getColor(){
+		return color;
 	}
 	public Polygon getPolygon() {
 		return polygon;
