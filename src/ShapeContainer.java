@@ -7,7 +7,7 @@ public class ShapeContainer {
 	private int radius;
 	private int rotation;
 	private int recurseFactor;
-	private GraphicsPolygon basePolygon;
+	private GraphicsBaseclass baseShape;
 	enum ADIR{INC, DEC};
 	private ADIR aDir;
 	public ShapeContainer() {
@@ -38,12 +38,14 @@ public class ShapeContainer {
 		rotation = radius;
 	}
 	public void rebuild() {
-		basePolygon = new GraphicsPolygon(color ,sides, new Vertix(500/2, 500/2), radius, ((double)rotation)*(Math.PI*2.0)/360.0, recurseFactor);
-		new RecursePolygons().recursePolygons(basePolygon);
+//		basePolygon = new GraphicsCircles(color ,sides, new Point(500/2, 500/2), radius, ((double)rotation)*(Math.PI*2.0)/360.0, recurseFactor);
+//		new RecursePolygons().recursePolygons(basePolygon);
+		baseShape = new GraphicsCircles(color ,sides, new Point(500/2, 500/2), radius, ((double)rotation)*(Math.PI*2.0)/360.0, recurseFactor);
+		baseShape.recurseShape(baseShape);
 
 	}
 	public void paintComponents(Graphics2D g) {
-		basePolygon.paintComponent(g);
+		baseShape.paintComponent(g);
 	}
 	public void setColor(Color color){
 		this.color = color; 
@@ -74,11 +76,5 @@ public class ShapeContainer {
 	}
 	public void setRecurseFactor(int recurseFactor) {
 		this.recurseFactor = recurseFactor;
-	}
-	public GraphicsPolygon getBasePolygon() {
-		return basePolygon;
-	}
-	public void setBasePolygon(GraphicsPolygon basePolygon) {
-		this.basePolygon = basePolygon;
 	}
 }
