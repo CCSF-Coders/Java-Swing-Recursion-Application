@@ -10,10 +10,24 @@ public class AppletTemplate extends JApplet {
 
 	public void paint(Graphics pen) {
 		
-		//YOUR CODE HERE!
-		pen.fillRect(50,50,50,50);
+		paintHelper(pen, 0, 0, 10, 10);
+		//pen.fillRect(50,50,50,50);
 	}
-
-	// DO YOU NEED A HELPER METHOD?
-
+	
+	//use a helper to make it recursive
+	public void paintHelper(Graphics pen, int x, int y, int minWidth, int minHigh)
+		if(h <= minHigh || w <= minWidth){
+			return ;
+		}
+		
+		int newWidth, newHigh;
+		int newX, int newY;
+		newWidth = (int) (minWidth * scaleFactor);
+		newHigh  = (int) (minHigh  * scaleFactor);
+		
+		newX = x;
+		newY = y;
+		pen.drawRect(newX, newY, newMinWidth, newMinHigh);
+		paintHelper(pen, minWidth, minHigh, newX, newY);
+	
 }
