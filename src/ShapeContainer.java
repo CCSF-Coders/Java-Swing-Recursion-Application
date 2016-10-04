@@ -1,4 +1,5 @@
 import java.awt.Graphics2D;
+
 import java.awt.Color;
 
 public class ShapeContainer {
@@ -7,9 +8,11 @@ public class ShapeContainer {
 	private int radius;
 	private int rotation;
 	private int recurseFactor;
-	private GraphicsPolygon basePolygon;
+	private GraphicsBaseclass baseShape;
 	enum ADIR{INC, DEC};
 	private ADIR aDir;
+	private RecursionProgram.SHAPES shape;
+	
 	public ShapeContainer() {
 		color = Color.RED;
 		sides = 4;
@@ -17,6 +20,7 @@ public class ShapeContainer {
 		rotation = 45;
 		recurseFactor = 2;
 		aDir = ADIR.DEC;
+		shape = RecursionProgram.SHAPES.Polygon;
 		rebuild();
 	}
 	public void animateStep() {
@@ -38,12 +42,22 @@ public class ShapeContainer {
 		rotation = radius;
 	}
 	public void rebuild() {
-		basePolygon = new GraphicsPolygon(color ,sides, new Vertix(500/2, 500/2), radius, ((double)rotation)*(Math.PI*2.0)/360.0, recurseFactor);
-		new RecursePolygons().recursePolygons(basePolygon);
+		switch ( shape ) {
+		case Circle:
+			baseShape = new GraphicsCircles(color ,sides, new Point(500/2, 500/2), radius, ((double)rotation)*(Math.PI*2.0)/360.0, recurseFactor);
+			break;
+		case Polygon:
+			baseShape = new GraphicsPolygon(color ,sides, new Point(500/2, 500/2), radius, ((double)rotation)*(Math.PI*2.0)/360.0, recurseFactor);
+			break;
+		default:
+			break;
+		
+		}
+		baseShape.recurseShape(baseShape);
 
 	}
 	public void paintComponents(Graphics2D g) {
-		basePolygon.paintComponent(g);
+		baseShape.paintComponent(g);
 	}
 	public void setColor(Color color){
 		this.color = color; 
@@ -75,10 +89,10 @@ public class ShapeContainer {
 	public void setRecurseFactor(int recurseFactor) {
 		this.recurseFactor = recurseFactor;
 	}
-	public GraphicsPolygon getBasePolygon() {
-		return basePolygon;
+	public RecursionProgram.SHAPES getShape() {
+		return shape;
 	}
-	public void setBasePolygon(GraphicsPolygon basePolygon) {
-		this.basePolygon = basePolygon;
+	public void setShape(RecursionProgram.SHAPES shape) {
+		this.shape = shape;
 	}
 }

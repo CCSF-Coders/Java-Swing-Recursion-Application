@@ -1,12 +1,12 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Polygon;
+import java.awt.geom.Ellipse2D;
 
-public class GraphicsPolygon extends GraphicsBaseclass {
-	private final GraphicShape[] vertixPolygons;
+public class GraphicsCircles extends GraphicsBaseclass {
+	private final GraphicShape[] vertixCircles;
 
 	private final Color color;
-	private final Polygon polygon;
+	private final Ellipse2D.Float ellipse;
 	private final int radius, sides;
 	private final Point center;
 	private final double rotation;
@@ -14,14 +14,14 @@ public class GraphicsPolygon extends GraphicsBaseclass {
 	private int[] xVertices;
 	private int[] yVertices;
 
-	public GraphicsPolygon(Color color,int sides, Point center, int radius, double rotation, double recursionFactor) {
+	public GraphicsCircles(Color color,int sides, Point center, int radius, double rotation, double recursionFactor) {
 		this.color = color;
 		this.radius = radius;
 		this.center = center;
 		this.sides = sides;
 		this.rotation = rotation;
 		this.recursionFactor = recursionFactor; 
-		vertixPolygons = new GraphicsPolygon[sides]; 
+		vertixCircles = new GraphicsCircles[sides]; 
 
 		double slice = (2*Math.PI)/((double)sides);
 		xVertices = new int[sides];
@@ -31,24 +31,22 @@ public class GraphicsPolygon extends GraphicsBaseclass {
 			xVertices[s] = (int)(center.getX()+(Math.cos((double)s*slice+rotation)*radius));
 			yVertices[s] = (int)(center.getY()+(Math.sin((double)s*slice+rotation)*radius));
 		}
-		polygon = new Polygon( xVertices, yVertices, sides);
+		ellipse = new Ellipse2D.Float(center.getX()-radius, center.getY()-radius, radius*2, radius*2);
 	}
 
 	@Override
 	public void paintComponent(Graphics2D g) {
 		g.setColor(this.color);
-		g.fillPolygon(polygon);
-		g.setColor(Color.GRAY);
-		g.drawPolygon(polygon);
-		for ( GraphicShape vertixPolygon: vertixPolygons ) {
-			if ( vertixPolygon != null ) vertixPolygon.paintComponent(g);
+		g.draw(ellipse);
+		for ( GraphicShape vertixCircle: vertixCircles ) {
+			if ( vertixCircle != null ) vertixCircle.paintComponent(g);
 		}
 	}
 	public Color getColor(){
 		return color;
 	}
-	public Polygon getPolygon() {
-		return polygon;
+	public Ellipse2D getPolygon() {
+		return ellipse;
 	}
 	public int getRadius() {
 		return radius;
@@ -66,22 +64,20 @@ public class GraphicsPolygon extends GraphicsBaseclass {
 		return recursionFactor;
 	}
 	public void setVertixPolygon(int index, GraphicShape graphicShape) {
-		vertixPolygons[index] = graphicShape;
+		vertixCircles[index] = graphicShape;
 	}
 
-	@Override
 	public int[] getXPoints() {
 		return xVertices;
 	}
 
-	@Override
 	public int[] getYPoints() {
 		return yVertices;
 	}
 
 	@Override
 	public GraphicShape newShape(Color color, int sides, Point center, int radius, double rotation, double recursionFactor) {
-		return new GraphicsPolygon(color, sides, center, radius, rotation, recursionFactor);
+		return new GraphicsCircles(color, sides, center, radius, rotation, recursionFactor);
 	}
 
 }

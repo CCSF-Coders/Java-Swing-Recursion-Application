@@ -20,10 +20,12 @@ public class RecursionProgram extends JFrame implements ActionListener {
 	private JComboBox<Integer> chooseRadius;
 	private JComboBox<Integer> chooseRotation;
 	private JComboBox<Integer> chooseRecurseFactor;
+	private JComboBox<SHAPES> chooseShape;
 	private JButton runAnimation;
 	private DrawingPanel drawingPanel;
 	private ShapeContainer shapeContainer;
 	private Animation animation;
+	public static enum SHAPES { Polygon, Circle }; 
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -50,6 +52,9 @@ public class RecursionProgram extends JFrame implements ActionListener {
 		}
 		else if ( e.getSource().equals(chooseRecurseFactor) ) {
 			shapeContainer.setRecurseFactor( ((Integer)chooseRecurseFactor.getSelectedItem()).intValue() );
+		}
+		else if ( e.getSource().equals(chooseShape) ) {
+			shapeContainer.setShape( (SHAPES)chooseShape.getSelectedItem() );
 		}
 		else if ( e.getSource().equals(runAnimation) ) {
 	    	if ( !animation.isAnimate() ) {
@@ -86,36 +91,44 @@ public class RecursionProgram extends JFrame implements ActionListener {
         drawingPanel.setPreferredSize(new Dimension(500, 500));
         pane.add(drawingPanel, BorderLayout.CENTER);
          
-        JPanel buttonPane = new JPanel();
-        pane.add(buttonPane, BorderLayout.SOUTH);
+        JPanel buttonPanel = new JPanel();
+        pane.add(buttonPanel, BorderLayout.SOUTH);
 
-        buttonPane.add(new JLabel("Color"));
+        buttonPanel.add(new JLabel("Color"));
         chooseColors = new JComboBox<String>(new String[]{"Red", "Green", "Blue"});
-        buttonPane.add(chooseColors);
+        buttonPanel.add(chooseColors);
         chooseColors.addActionListener(this);
 
-    	buttonPane.add(new JLabel("Sides"));
+    	buttonPanel.add(new JLabel("Sides"));
     	chooseSides = new JComboBox<Integer>(new Integer[] {3,4,5,6,7,8,9,10,11,12});
-    	buttonPane.add(chooseSides);
+    	buttonPanel.add(chooseSides);
     	chooseSides.addActionListener(this);
 
-    	buttonPane.add(new JLabel("Radius"));
+    	buttonPanel.add(new JLabel("Radius"));
     	chooseRadius = new JComboBox<Integer>(new Integer[] {50,100,150,200,250});
-    	buttonPane.add(chooseRadius);
+    	buttonPanel.add(chooseRadius);
     	chooseRadius.addActionListener(this);
 
-    	buttonPane.add(new JLabel("Rotation"));
+    	buttonPanel.add(new JLabel("Rotation"));
     	chooseRotation = new JComboBox<Integer>(new Integer[] {0,30,45,60,90});
-    	buttonPane.add(chooseRotation);
+    	buttonPanel.add(chooseRotation);
     	chooseRotation.addActionListener(this);
 
-    	buttonPane.add(new JLabel("Factor"));
+    	buttonPanel.add(new JLabel("Factor"));
     	chooseRecurseFactor = new JComboBox<Integer>(new Integer[] {2,3,4,5,6,7,8});
-    	buttonPane.add(chooseRecurseFactor);
+    	buttonPanel.add(chooseRecurseFactor);
     	chooseRecurseFactor.addActionListener(this);
 
-    	runAnimation = new JButton("Start Animation");
-    	buttonPane.add(runAnimation);
+        buttonPanel = new JPanel();
+        pane.add(buttonPanel, BorderLayout.NORTH);
+
+    	buttonPanel.add(new JLabel("Shapes"));
+    	chooseShape = new JComboBox<SHAPES>(new SHAPES[] {SHAPES.Polygon, SHAPES.Circle});
+    	buttonPanel.add(chooseShape);
+    	chooseShape.addActionListener(this);
+
+        runAnimation = new JButton("Start Animation");
+    	buttonPanel.add(runAnimation);
     	runAnimation.addActionListener(this);
 
     	shapeContainer = new ShapeContainer(); 
@@ -130,6 +143,7 @@ public class RecursionProgram extends JFrame implements ActionListener {
 		chooseRadius.setSelectedItem(shapeContainer.getRadius());
 		chooseRotation.setSelectedItem(shapeContainer.getRotation());
 		chooseRecurseFactor.setSelectedItem(shapeContainer.getRecurseFactor());
+		chooseShape.setSelectedItem(shapeContainer.getShape());
 	}
 	private void createAndShowGUI() {
          
