@@ -28,8 +28,8 @@ public class GraphicsPolygon extends GraphicsBaseclass {
 		yVertices = new int[sides];
 		
 		for ( int s=0; s < sides; ++s ) {
-			xVertices[s] = (int)(center.getX()+(Math.cos((double)s*slice+rotation)*radius));
-			yVertices[s] = (int)(center.getY()+(Math.sin((double)s*slice+rotation)*radius));
+			xVertices[s] = (int)(center.getX()-(Math.cos((double)s*slice+rotation)*radius));
+			yVertices[s] = (int)(center.getY()-(Math.sin((double)s*slice+rotation)*radius));
 		}
 		polygon = new Polygon( xVertices, yVertices, sides);
 	}
@@ -65,7 +65,7 @@ public class GraphicsPolygon extends GraphicsBaseclass {
 	public double getRecursionFactor() {
 		return recursionFactor;
 	}
-	public void setVertixPolygon(int index, GraphicShape graphicShape) {
+	public void setVertixShape(int index, GraphicShape graphicShape) {
 		vertixPolygons[index] = graphicShape;
 	}
 

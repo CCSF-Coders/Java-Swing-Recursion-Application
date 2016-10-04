@@ -35,7 +35,7 @@ public class ShapeContainer {
 			}
 		} else {
 			radius = radius + 2;
-			if ( radius > 150  ) {
+			if ( radius > 180  ) {
 				aDir = ADIR.DEC;
 			}
 		}

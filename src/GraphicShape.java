@@ -12,6 +12,6 @@ public interface GraphicShape {
 	public int getSides();
 	public double getRotation();
 	public double getRecursionFactor();
-	public void setVertixPolygon(int i, GraphicShape p);
+	public void setVertixShape(int i, GraphicShape p);
 	public GraphicShape newShape(Color color, int sides, Point center, int radius, double rotation, double recursionFactor);
 }

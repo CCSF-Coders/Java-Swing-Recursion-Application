@@ -28,8 +28,8 @@ public class GraphicsCircles extends GraphicsBaseclass {
 		yVertices = new int[sides];
 		
 		for ( int s=0; s < sides; ++s ) {
-			xVertices[s] = (int)(center.getX()+(Math.cos((double)s*slice+rotation)*radius));
-			yVertices[s] = (int)(center.getY()+(Math.sin((double)s*slice+rotation)*radius));
+			xVertices[s] = (int)(center.getX()-(Math.cos((double)s*slice+rotation)*radius));
+			yVertices[s] = (int)(center.getY()-(Math.sin((double)s*slice+rotation)*radius));
 		}
 		ellipse = new Ellipse2D.Float(center.getX()-radius, center.getY()-radius, radius*2, radius*2);
 	}
@@ -63,7 +63,7 @@ public class GraphicsCircles extends GraphicsBaseclass {
 	public double getRecursionFactor() {
 		return recursionFactor;
 	}
-	public void setVertixPolygon(int index, GraphicShape graphicShape) {
+	public void setVertixShape(int index, GraphicShape graphicShape) {
 		vertixCircles[index] = graphicShape;
 	}
 

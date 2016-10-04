@@ -13,7 +13,7 @@ public abstract class GraphicsBaseclass implements GraphicShape {
 					(int)((double)baseShape.getRadius()/baseShape.getRecursionFactor()), 
 					baseShape.getRotation(), 
 					baseShape.getRecursionFactor());
-				baseShape.setVertixPolygon(i, p);
+				baseShape.setVertixShape(i, p);
 				recurseShape(p);
 			}
 		}
