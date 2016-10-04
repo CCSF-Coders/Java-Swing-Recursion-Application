@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
+import java.util.Random;
 
 public class GraphicsCircles extends GraphicsBaseclass {
 	private final GraphicShape[] vertixCircles;
@@ -18,16 +19,20 @@ public class GraphicsCircles extends GraphicsBaseclass {
 	public GraphicsCircles(boolean change, Color color,int sides, Point center, int radius, double rotation, double recursionFactor) {
 		this.colorChange = change;
 		if(colorChange){
-			if(radius > 10 && radius < 40){
-				this.color = Color.RED;
+			if(radius > 10  && radius < 60){
+				if(radius % 2 == 0){
+					this.color = Color.RED;
+				}else{
+					this.color = Color.PINK;
+				}
 			}
-			else if(radius > 40 && radius < 80){
+			else if(radius > 60 && radius < 100){
 				this.color = Color.GREEN;
 			}
-			else if(radius > 80 && radius < 120){
+			else if(radius > 100 && radius < 180){
 				this.color = Color.BLUE;
 			}else{
-				this.color = Color.ORANGE;
+				this.color = Color.BLACK;
 			}
 		}else{
 			this.color = color;
