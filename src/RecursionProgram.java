@@ -40,7 +40,7 @@ public class RecursionProgram extends JFrame implements ActionListener {
 		else if(e.getSource().equals(colorChange)){
 			shapeContainer.setColorChange(colorChange.isSelected());
 		}
-		else if(e.getSource().equals(chooseColors)){
+		else if(e.getSource().equals(chooseColors) && (!colorChange.isSelected())){
 			String selection = (String)chooseColors.getSelectedItem();
 			if(selection.equals("Red")){
 				shapeContainer.setColor(Color.RED);

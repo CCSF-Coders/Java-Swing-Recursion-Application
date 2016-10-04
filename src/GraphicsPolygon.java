@@ -18,16 +18,20 @@ public class GraphicsPolygon extends GraphicsBaseclass {
 	public GraphicsPolygon(boolean change, Color color,int sides, Point center, int radius, double rotation, double recursionFactor) {
 		this.colorChange = change;
 		if(colorChange){
-			if(radius > 10 && radius < 50){
-				this.color = Color.RED;
+			if(radius > 10  && radius < 60){
+				if(radius % 2 == 0){
+					this.color = Color.RED;
+				}else{
+					this.color = Color.BLACK;
+				}
 			}
-			else if(radius > 40 && radius < 90){
-				this.color = Color.GREEN;
+			else if(radius > 60 && radius < 100){
+				this.color = Color.BLACK;
 			}
-			else if(radius > 80 && radius < 120){
+			else if(radius > 100 && radius < 180){
 				this.color = Color.BLUE;
-			}else{
-				this.color = Color.ORANGE;
+			}else {
+				this.color = Color.GRAY;
 			}
 		}else{
 			this.color = color;
