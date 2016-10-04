@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 
 public interface GraphicShape {
 	public void paintComponent(Graphics2D g);
+<<<<<<< 89f19258788f139c75fa2a004f84b89167660acd
 	public void recurseShape(GraphicShape baseShape);
 	public int[] getXPoints();
 	public int[] getYPoints();
@@ -14,4 +15,7 @@ public interface GraphicShape {
 	public double getRecursionFactor();
 	public void setVertixShape(int i, GraphicShape p);
 	public GraphicShape newShape(Color color, int sides, Point center, int radius, double rotation, double recursionFactor);
+=======
+
+>>>>>>> Color changed
 }

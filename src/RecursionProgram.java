@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Checkbox;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -15,6 +16,7 @@ import java.awt.event.ActionListener;
 
 @SuppressWarnings("serial")
 public class RecursionProgram extends JFrame implements ActionListener {
+	private JCheckBox colorChange;
 	private JComboBox<String> chooseColors;
 	private JComboBox<Integer> chooseSides;
 	private JComboBox<Integer> chooseRadius;
@@ -34,6 +36,9 @@ public class RecursionProgram extends JFrame implements ActionListener {
 		}
 		else if (e.getSource().equals(chooseRadius) ) {
 			shapeContainer.setRadius( ((Integer)chooseRadius.getSelectedItem()).intValue() );
+		}
+		else if(e.getSource().equals(colorChange)){
+			shapeContainer.setColorChange(colorChange.isSelected());
 		}
 		else if(e.getSource().equals(chooseColors)){
 			String selection = (String)chooseColors.getSelectedItem();
@@ -94,7 +99,15 @@ public class RecursionProgram extends JFrame implements ActionListener {
         JPanel buttonPanel = new JPanel();
         pane.add(buttonPanel, BorderLayout.SOUTH);
 
+<<<<<<< 89f19258788f139c75fa2a004f84b89167660acd
         buttonPanel.add(new JLabel("Color"));
+=======
+        colorChange = new JCheckBox("Color Shift", true);
+        buttonPane.add(colorChange);
+        colorChange.addActionListener(this);
+
+        buttonPane.add(new JLabel("Color"));
+>>>>>>> Color changed
         chooseColors = new JComboBox<String>(new String[]{"Red", "Green", "Blue"});
         buttonPanel.add(chooseColors);
         chooseColors.addActionListener(this);
