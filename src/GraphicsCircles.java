@@ -5,6 +5,7 @@ import java.awt.geom.Ellipse2D;
 public class GraphicsCircles extends GraphicsBaseclass {
 	private final GraphicShape[] vertixCircles;
 
+	private final boolean colorChange;
 	private final Color color;
 	private final Ellipse2D.Float ellipse;
 	private final int radius, sides;
@@ -14,8 +15,23 @@ public class GraphicsCircles extends GraphicsBaseclass {
 	private int[] xVertices;
 	private int[] yVertices;
 
-	public GraphicsCircles(Color color,int sides, Point center, int radius, double rotation, double recursionFactor) {
-		this.color = color;
+	public GraphicsCircles(boolean change, Color color,int sides, Point center, int radius, double rotation, double recursionFactor) {
+		this.colorChange = change;
+		if(colorChange){
+			if(radius > 10 && radius < 40){
+				this.color = Color.RED;
+			}
+			else if(radius > 40 && radius < 80){
+				this.color = Color.GREEN;
+			}
+			else if(radius > 80 && radius < 120){
+				this.color = Color.BLUE;
+			}else{
+				this.color = Color.ORANGE;
+			}
+		}else{
+			this.color = color;
+		}
 		this.radius = radius;
 		this.center = center;
 		this.sides = sides;
@@ -41,6 +57,9 @@ public class GraphicsCircles extends GraphicsBaseclass {
 		for ( GraphicShape vertixCircle: vertixCircles ) {
 			if ( vertixCircle != null ) vertixCircle.paintComponent(g);
 		}
+	}
+	public boolean getColorChange(){
+		return colorChange;
 	}
 	public Color getColor(){
 		return color;
@@ -76,8 +95,8 @@ public class GraphicsCircles extends GraphicsBaseclass {
 	}
 
 	@Override
-	public GraphicShape newShape(Color color, int sides, Point center, int radius, double rotation, double recursionFactor) {
-		return new GraphicsCircles(color, sides, center, radius, rotation, recursionFactor);
+	public GraphicShape newShape(boolean change, Color color, int sides, Point center, int radius, double rotation, double recursionFactor) {
+		return new GraphicsCircles(colorChange, color, sides, center, radius, rotation, recursionFactor);
 	}
 
 }

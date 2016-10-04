@@ -99,10 +99,10 @@ public class RecursionProgram extends JFrame implements ActionListener {
         JPanel buttonPanel = new JPanel();
         pane.add(buttonPanel, BorderLayout.SOUTH);
         colorChange = new JCheckBox("Color Shift", true);
-        buttonPane.add(colorChange);
+        buttonPanel.add(colorChange);
         colorChange.addActionListener(this);
 
-        buttonPane.add(new JLabel("Color"));
+        buttonPanel.add(new JLabel("Color"));
         chooseColors = new JComboBox<String>(new String[]{"Red", "Green", "Blue"});
         buttonPanel.add(chooseColors);
         chooseColors.addActionListener(this);

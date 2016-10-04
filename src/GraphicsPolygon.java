@@ -2,13 +2,8 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
 
-<<<<<<< 89f19258788f139c75fa2a004f84b89167660acd
 public class GraphicsPolygon extends GraphicsBaseclass {
 	private final GraphicShape[] vertixPolygons;
-=======
-public class GraphicsPolygon implements GraphicShape{
-	private final GraphicsPolygon[] vertixPolygons;
->>>>>>> Color changed
 
 	private final boolean colorChange;
 	private final Color color;
@@ -20,17 +15,13 @@ public class GraphicsPolygon implements GraphicShape{
 	private int[] xVertices;
 	private int[] yVertices;
 
-<<<<<<< 89f19258788f139c75fa2a004f84b89167660acd
-	public GraphicsPolygon(Color color,int sides, Point center, int radius, double rotation, double recursionFactor) {
-		this.color = color;
-=======
-	public GraphicsPolygon(boolean change,Color color,int sides, Vertix center, int radius, double rotation, double recursionFactor) {
+	public GraphicsPolygon(boolean change, Color color,int sides, Point center, int radius, double rotation, double recursionFactor) {
 		this.colorChange = change;
 		if(colorChange){
-			if(radius > 10 && radius < 40){
+			if(radius > 10 && radius < 50){
 				this.color = Color.RED;
 			}
-			else if(radius > 40 && radius < 80){
+			else if(radius > 40 && radius < 90){
 				this.color = Color.GREEN;
 			}
 			else if(radius > 80 && radius < 120){
@@ -41,7 +32,6 @@ public class GraphicsPolygon implements GraphicShape{
 		}else{
 			this.color = color;
 		}
->>>>>>> Color changed
 		this.radius = radius;
 		this.center = center;
 		this.sides = sides;
@@ -110,8 +100,8 @@ public class GraphicsPolygon implements GraphicShape{
 	}
 
 	@Override
-	public GraphicShape newShape(Color color, int sides, Point center, int radius, double rotation, double recursionFactor) {
-		return new GraphicsPolygon(color, sides, center, radius, rotation, recursionFactor);
+	public GraphicShape newShape(boolean change,Color color, int sides, Point center, int radius, double rotation, double recursionFactor) {
+		return new GraphicsPolygon(colorChange, color, sides, center, radius, rotation, recursionFactor);
 	}
 
 }
