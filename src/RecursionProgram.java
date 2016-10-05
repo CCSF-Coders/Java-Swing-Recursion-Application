@@ -51,6 +51,9 @@ public class RecursionProgram extends JFrame implements ActionListener {
 			if(selection.equals("Blue")){
 				shapeContainer.setColor(Color.BLUE);
 			}
+			if(selection.equals("Black")){
+				shapeContainer.setColor(Color.BLACK);
+			}
 		}
 		else if ( e.getSource().equals(chooseRotation) ) {
 			shapeContainer.setRotation( ((Integer)chooseRotation.getSelectedItem()).intValue() );
@@ -103,7 +106,7 @@ public class RecursionProgram extends JFrame implements ActionListener {
         colorChange.addActionListener(this);
 
         buttonPanel.add(new JLabel("Color"));
-        chooseColors = new JComboBox<String>(new String[]{"Red", "Green", "Blue"});
+        chooseColors = new JComboBox<String>(new String[]{"Red", "Green", "Blue", "Black"});
         buttonPanel.add(chooseColors);
         chooseColors.addActionListener(this);
 

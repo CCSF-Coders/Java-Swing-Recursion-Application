@@ -19,23 +19,21 @@ public class GraphicsPolygon extends GraphicsBaseclass {
 		this.colorChange = change;
 		if(colorChange){
 			if(radius > 10  && radius < 60){
-				if(radius % 2 == 0){
-					this.color = Color.RED;
-				}else{
-					this.color = Color.BLACK;
-				}
+				if(radius % 2 == 0){this.color = Color.RED;}
+				else{this.color = Color.MAGENTA;}
 			}
 			else if(radius > 60 && radius < 100){
-				this.color = Color.BLACK;
+				this.color = Color.GREEN;
 			}
-			else if(radius > 100 && radius < 180){
+			else if(radius > 100 && radius < 190){
 				this.color = Color.BLUE;
-			}else {
-				this.color = Color.GRAY;
 			}
-		}else{
+			else{
+				this.color = Color.YELLOW;
+				}
+			}else{
 			this.color = color;
-		}
+			}
 		this.radius = radius;
 		this.center = center;
 		this.sides = sides;
@@ -107,5 +105,6 @@ public class GraphicsPolygon extends GraphicsBaseclass {
 	public GraphicShape newShape(boolean change,Color color, int sides, Point center, int radius, double rotation, double recursionFactor) {
 		return new GraphicsPolygon(colorChange, color, sides, center, radius, rotation, recursionFactor);
 	}
-
 }
+
+
