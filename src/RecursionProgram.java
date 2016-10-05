@@ -28,7 +28,7 @@ public class RecursionProgram extends JFrame implements ActionListener {
 	private DrawingPanel drawingPanel;
 	private ShapeContainer shapeContainer;
 	private Animation animation;
-	public static enum SHAPES { Polygon, Circle, Spikes }; 
+	public static enum SHAPES { Polygon, Circle, Spikes, Curves }; 
 	public static enum COLORS { Red, Green, Blue, Black }; 
 	
 	@Override

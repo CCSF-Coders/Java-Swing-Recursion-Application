@@ -46,16 +46,16 @@ public class ShapeContainer {
 	public void rebuild() {
 		switch (shape) {
 		case Circle:
-			baseShape = new GraphicsCircles(colorChange, color ,sides, new Point(500/2, 500/2), radius, ((double)rotation)*(Math.PI*2.0)/360.0, recurseFactor);
+			baseShape = new GraphicsCircles(colorChange, color ,sides, new Point(500/2, 500/2), radius, ((double)rotation)*(Math.PI*2.0)/360.0, recurseFactor, 0);
 			break;
 		case Polygon:
-			baseShape = new GraphicsPolygon(colorChange, color ,sides, new Point(500/2, 500/2), radius, ((double)rotation)*(Math.PI*2.0)/360.0, recurseFactor);
+			baseShape = new GraphicsPolygon(colorChange, color ,sides, new Point(500/2, 500/2), radius, ((double)rotation)*(Math.PI*2.0)/360.0, recurseFactor, 0);
 			break;
 		case Spikes:
-			baseShape = new GraphicsSpikes(colorChange, color ,sides, new Point(500/2, 500/2), radius, ((double)rotation)*(Math.PI*2.0)/360.0, recurseFactor);
+			baseShape = new GraphicsSpikes(colorChange, color ,sides, new Point(500/2, 500/2), radius, ((double)rotation)*(Math.PI*2.0)/360.0, recurseFactor, 0);
 			break;
 		case Curves:
-			baseShape = new GraphicsCurves(colorChange, color ,sides, new Point(500/2, 500/2), radius, ((double)rotation)*(Math.PI*2.0)/360.0, recurseFactor);
+			baseShape = new GraphicsCurves(colorChange, color ,sides, new Point(500/2, 500/2), radius, ((double)rotation)*(Math.PI*2.0)/360.0, recurseFactor, 0);
 			break;
 		default:
 			break;

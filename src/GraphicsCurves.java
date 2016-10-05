@@ -9,8 +9,8 @@ public class GraphicsCurves extends GraphicsBaseclass {
 	private int[] xVertices;
 	private int[] yVertices;
 
-	public GraphicsCurves(boolean change, Color color,int sides, Point center, int radius, double rotation, double recursionFactor) {
-		super(change, color, sides, center, radius, rotation, recursionFactor);
+	public GraphicsCurves(boolean change, Color color,int sides, Point center, int radius, double rotation, double recursionFactor, int counter) {
+		super(change, color, sides, center, radius, rotation, recursionFactor, counter);
 		vertixCircles = new GraphicsCurves[sides];
 		spikes = new CubicCurve2D.Float[sides];
 
@@ -38,7 +38,7 @@ public class GraphicsCurves extends GraphicsBaseclass {
 		g.setColor(this.color);
 		for ( int s=0; s < sides; ++s ) {
 			g.setColor(this.color);
-			g.draw(spikes[s]);
+			g.fill(spikes[s]);
 		}
 		for ( GraphicShape vertixCircle: vertixCircles ) {
 			if ( vertixCircle != null ) vertixCircle.paintComponent(g);
@@ -82,8 +82,8 @@ public class GraphicsCurves extends GraphicsBaseclass {
 	}
 
 	@Override
-	public GraphicShape newShape(boolean change, Color color, int sides, Point center, int radius, double rotation, double recursionFactor) {
-		return new GraphicsCurves(colorChange, color, sides, center, radius, rotation, recursionFactor);
+	public GraphicShape newShape(boolean change, Color color, int sides, Point center, int radius, double rotation, double recursionFactor, int counter) {
+		return new GraphicsCurves(colorChange, color, sides, center, radius, rotation, recursionFactor, counter);
 	}
 
 }

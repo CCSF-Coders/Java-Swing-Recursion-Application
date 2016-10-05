@@ -6,8 +6,8 @@ public class GraphicsPolygon extends GraphicsBaseclass {
 	private final GraphicShape[] vertixPolygons;
 	private final Polygon polygon;
 
-	public GraphicsPolygon(boolean change, Color color, int sides, Point center, int radius, double rotation, double recursionFactor) {
-		super(change, color, sides, center, radius, rotation, recursionFactor);
+	public GraphicsPolygon(boolean change, Color color, int sides, Point center, int radius, double rotation, double recursionFactor, int counter) {
+		super(change, color, sides, center, radius, rotation, recursionFactor, counter);
 		vertixPolygons = new GraphicsPolygon[sides];
 
 		double slice = (2 * Math.PI) / ((double) sides);
@@ -78,7 +78,7 @@ public class GraphicsPolygon extends GraphicsBaseclass {
 	}
 
 	@Override
-	public GraphicShape newShape(boolean change, Color color, int sides, Point center, int radius, double rotation, double recursionFactor) {
-		return new GraphicsPolygon(colorChange, color, sides, center, radius, rotation, recursionFactor);
+	public GraphicShape newShape(boolean change, Color color, int sides, Point center, int radius, double rotation, double recursionFactor, int counter) {
+		return new GraphicsPolygon(colorChange, color, sides, center, radius, rotation, recursionFactor, counter);
 	}
 }

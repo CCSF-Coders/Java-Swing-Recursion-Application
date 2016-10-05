@@ -6,14 +6,17 @@ public abstract class GraphicsBaseclass implements GraphicShape {
 	protected final int radius, sides;
 	protected final double rotation;
 	protected final double recursionFactor;
+	protected int counter;
 	
-	public GraphicsBaseclass(boolean change, Color color, int sides, Point center, int radius, double rotation, double recursionFactor) {
+	public GraphicsBaseclass(boolean change, Color color, int sides, Point center, int radius, double rotation, double recursionFactor, int counter) {
 		this.colorChange = change;
 		this.radius = radius;
 		this.sides = sides;
 		this.rotation = rotation;
 		this.recursionFactor = recursionFactor;
+		this.counter = counter;
 		if (colorChange) {
+/*			
 			if (radius < 10) {
 				this.color = Color.RED;
 			} else if (radius >= 10 && radius < 20) {
@@ -26,6 +29,27 @@ public abstract class GraphicsBaseclass implements GraphicShape {
 				this.color = Color.BLUE;
 			} else {
 				this.color = Color.MAGENTA;
+			}
+*/			
+			switch (++this.counter) {
+			case 1:
+				this.color = Color.MAGENTA;
+				break;
+			case 2:
+				this.color = Color.BLUE;
+				break;
+			case 3:
+				this.color = Color.CYAN;
+				break;
+			case 4:
+				this.color = Color.GREEN;
+				break;
+			case 5:
+				this.color = Color.YELLOW;
+				break;
+			default:
+				this.color = Color.RED;
+				break;
 			}
 		} else {
 			this.color = color;
@@ -46,10 +70,15 @@ public abstract class GraphicsBaseclass implements GraphicShape {
 					new Point(xpoints[i], ypoints[i]), 
 					(int)((double)baseShape.getRadius()/baseShape.getRecursionFactor()), 
 					baseShape.getRotation(), 
-					baseShape.getRecursionFactor());
+					baseShape.getRecursionFactor(), 
+					baseShape.getCounter());
 				baseShape.setVertixShape(i, p);
 				recurseShape(p);
 			}
 		}
+	}
+	@Override
+	public int getCounter() {
+		return counter;
 	}
 }

@@ -14,5 +14,6 @@ public interface GraphicShape {
 	public double getRotation();
 	public double getRecursionFactor();
 	public void setVertixShape(int i, GraphicShape p);
-	public GraphicShape newShape(boolean change,Color color, int sides, Point center, int radius, double rotation, double recursionFactor);
+	public GraphicShape newShape(boolean change,Color color, int sides, Point center, int radius, double rotation, double recursionFactor, int counter);
+	public int getCounter();
 }

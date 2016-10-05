@@ -9,11 +9,11 @@ public class GraphicsSpikes extends GraphicsBaseclass {
 	private int[] xVertices;
 	private int[] yVertices;
 
-	public GraphicsSpikes(boolean change, Color color,int sides, Point center, int radius, double rotation, double recursionFactor) {
-		super(change, color, sides, center, radius, rotation, recursionFactor);
+	public GraphicsSpikes(boolean change, Color color,int sides, Point center, int radius, double rotation, double recursionFactor, int counter) {
+		super(change, color, sides, center, radius, rotation, recursionFactor, counter);
 		vertixCircles = new GraphicsSpikes[sides];
 		spikes = new Polygon[sides];
-
+		
 		double slice = (2*Math.PI)/((double)sides);
 		xVertices = new int[sides];
 		yVertices = new int[sides];
@@ -85,8 +85,8 @@ public class GraphicsSpikes extends GraphicsBaseclass {
 	}
 
 	@Override
-	public GraphicShape newShape(boolean change, Color color, int sides, Point center, int radius, double rotation, double recursionFactor) {
-		return new GraphicsSpikes(colorChange, color, sides, center, radius, rotation, recursionFactor);
+	public GraphicShape newShape(boolean change, Color color, int sides, Point center, int radius, double rotation, double recursionFactor, int counter) {
+		return new GraphicsSpikes(colorChange, color, sides, center, radius, rotation, recursionFactor, counter);
 	}
 
 }

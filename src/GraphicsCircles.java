@@ -9,8 +9,8 @@ public class GraphicsCircles extends GraphicsBaseclass {
 	private int[] xVertices;
 	private int[] yVertices;
 
-	public GraphicsCircles(boolean change, Color color,int sides, Point center, int radius, double rotation, double recursionFactor) {
-		super(change, color, sides, center, radius, rotation, recursionFactor);
+	public GraphicsCircles(boolean change, Color color,int sides, Point center, int radius, double rotation, double recursionFactor, int counter) {
+		super(change, color, sides, center, radius, rotation, recursionFactor, counter);
 		vertixCircles = new GraphicsCircles[sides]; 
 
 		double slice = (2*Math.PI)/((double)sides);
@@ -72,8 +72,8 @@ public class GraphicsCircles extends GraphicsBaseclass {
 	}
 
 	@Override
-	public GraphicShape newShape(boolean change, Color color, int sides, Point center, int radius, double rotation, double recursionFactor) {
-		return new GraphicsCircles(colorChange, color, sides, center, radius, rotation, recursionFactor);
+	public GraphicShape newShape(boolean change, Color color, int sides, Point center, int radius, double rotation, double recursionFactor, int counter) {
+		return new GraphicsCircles(colorChange, color, sides, center, radius, rotation, recursionFactor, counter);
 	}
 
 }
