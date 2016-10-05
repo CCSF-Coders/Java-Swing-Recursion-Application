@@ -1,17 +1,18 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.geom.Ellipse2D;
+import java.awt.geom.CubicCurve2D;
 
-public class GraphicsCircles extends GraphicsBaseclass {
+public class GraphicsCurves extends GraphicsBaseclass {
 	private final GraphicShape[] vertixCircles;
 
-	private final Ellipse2D.Float ellipse;
+	private CubicCurve2D.Float[] spikes;
 	private int[] xVertices;
 	private int[] yVertices;
 
-	public GraphicsCircles(boolean change, Color color,int sides, Point center, int radius, double rotation, double recursionFactor) {
+	public GraphicsCurves(boolean change, Color color,int sides, Point center, int radius, double rotation, double recursionFactor) {
 		super(change, color, sides, center, radius, rotation, recursionFactor);
-		vertixCircles = new GraphicsCircles[sides]; 
+		vertixCircles = new GraphicsCurves[sides];
+		spikes = new CubicCurve2D.Float[sides];
 
 		double slice = (2*Math.PI)/((double)sides);
 		xVertices = new int[sides];
@@ -20,16 +21,25 @@ public class GraphicsCircles extends GraphicsBaseclass {
 		for ( int s=0; s < sides; ++s ) {
 			xVertices[s] = (int)(center.getX()-(Math.cos((double)s*slice+rotation)*radius));
 			yVertices[s] = (int)(center.getY()-(Math.sin((double)s*slice+rotation)*radius));
+			float x1 = center.getX();
+			float y1 = center.getY();
+			float ctrlx1 = (float) (center.getX()-(Math.cos((double)s*slice+(rotation+Math.PI/4))*(radius)));
+			float ctrly1 = (float) (center.getY()-(Math.sin((double)s*slice+(rotation+Math.PI/4))*(radius)));
+			float ctrlx2 = (float) (center.getX()-(Math.cos((double)s*slice+(rotation-Math.PI/4))*(radius)));
+			float ctrly2 = (float) (center.getY()-(Math.sin((double)s*slice+(rotation-Math.PI/4))*(radius)));
+			float x2 = (float)(center.getX()-(Math.cos((double)s*slice+rotation)*(radius)));
+			float y2 = (float)(center.getY()-(Math.sin((double)s*slice+rotation)*(radius)));
+			spikes[s] = new CubicCurve2D.Float(x1, y1, ctrlx1, ctrly1, ctrlx2, ctrly2, x2, y2);
 		}
-		ellipse = new Ellipse2D.Float(center.getX()-radius, center.getY()-radius, radius*2, radius*2);
 	}
 
 	@Override
 	public void paintComponent(Graphics2D g) {
-		g.setColor(Color.GRAY);
-		g.draw(ellipse);
 		g.setColor(this.color);
-		g.fill(ellipse);
+		for ( int s=0; s < sides; ++s ) {
+			g.setColor(this.color);
+			g.draw(spikes[s]);
+		}
 		for ( GraphicShape vertixCircle: vertixCircles ) {
 			if ( vertixCircle != null ) vertixCircle.paintComponent(g);
 		}
@@ -73,7 +83,7 @@ public class GraphicsCircles extends GraphicsBaseclass {
 
 	@Override
 	public GraphicShape newShape(boolean change, Color color, int sides, Point center, int radius, double rotation, double recursionFactor) {
-		return new GraphicsCircles(colorChange, color, sides, center, radius, rotation, recursionFactor);
+		return new GraphicsCurves(colorChange, color, sides, center, radius, rotation, recursionFactor);
 	}
 
 }
