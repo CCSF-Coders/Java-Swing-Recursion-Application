@@ -8,12 +8,14 @@ public class ShapeContainer {
 	private int radius;
 	private int rotation;
 	private int recurseFactor;
+	private boolean colorChange;
 	private GraphicsBaseclass baseShape;
 	enum ADIR{INC, DEC};
 	private ADIR aDir;
 	private RecursionProgram.SHAPES shape;
 	
 	public ShapeContainer() {
+		colorChange = true;	
 		color = Color.RED;
 		sides = 4;
 		radius = 150;
@@ -42,12 +44,12 @@ public class ShapeContainer {
 		rotation = radius;
 	}
 	public void rebuild() {
-		switch ( shape ) {
+		switch (shape) {
 		case Circle:
-			baseShape = new GraphicsCircles(color ,sides, new Point(500/2, 500/2), radius, ((double)rotation)*(Math.PI*2.0)/360.0, recurseFactor);
+			baseShape = new GraphicsCircles(colorChange, color ,sides, new Point(500/2, 500/2), radius, ((double)rotation)*(Math.PI*2.0)/360.0, recurseFactor);
 			break;
 		case Polygon:
-			baseShape = new GraphicsPolygon(color ,sides, new Point(500/2, 500/2), radius, ((double)rotation)*(Math.PI*2.0)/360.0, recurseFactor);
+			baseShape = new GraphicsPolygon(colorChange, color ,sides, new Point(500/2, 500/2), radius, ((double)rotation)*(Math.PI*2.0)/360.0, recurseFactor);
 			break;
 		default:
 			break;
@@ -58,6 +60,12 @@ public class ShapeContainer {
 	}
 	public void paintComponents(Graphics2D g) {
 		baseShape.paintComponent(g);
+	}
+	public void setColorChange(boolean change){
+		this.colorChange = change;
+	}
+	public boolean getColorChange(){
+		return this.colorChange; 
 	}
 	public void setColor(Color color){
 		this.color = color; 

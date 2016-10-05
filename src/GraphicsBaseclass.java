@@ -7,6 +7,7 @@ public abstract class GraphicsBaseclass implements GraphicShape {
 			int[] ypoints = baseShape.getYPoints();
 			for ( int i=0; i < xpoints.length; ++i ) {
 				GraphicShape p = baseShape.newShape(
+					baseShape.getColorChange(),
 					baseShape.getColor(),
 					baseShape.getSides(), 
 					new Point(xpoints[i], ypoints[i]), 

@@ -5,6 +5,7 @@ import java.awt.Polygon;
 public class GraphicsPolygon extends GraphicsBaseclass {
 	private final GraphicShape[] vertixPolygons;
 
+	private final boolean colorChange;
 	private final Color color;
 	private final Polygon polygon;
 	private final int radius, sides;
@@ -14,8 +15,25 @@ public class GraphicsPolygon extends GraphicsBaseclass {
 	private int[] xVertices;
 	private int[] yVertices;
 
-	public GraphicsPolygon(Color color,int sides, Point center, int radius, double rotation, double recursionFactor) {
-		this.color = color;
+	public GraphicsPolygon(boolean change, Color color,int sides, Point center, int radius, double rotation, double recursionFactor) {
+		this.colorChange = change;
+		if(colorChange){
+			if(radius > 10  && radius < 60){
+				if(radius % 2 == 0){this.color = Color.RED;}
+				else{this.color = Color.MAGENTA;}
+			}
+			else if(radius > 60 && radius < 100){
+				this.color = Color.GREEN;
+			}
+			else if(radius > 100 && radius < 190){
+				this.color = Color.BLUE;
+			}
+			else{
+				this.color = Color.YELLOW;
+				}
+			}else{
+			this.color = color;
+			}
 		this.radius = radius;
 		this.center = center;
 		this.sides = sides;
@@ -43,6 +61,10 @@ public class GraphicsPolygon extends GraphicsBaseclass {
 		for ( GraphicShape vertixPolygon: vertixPolygons ) {
 			if ( vertixPolygon != null ) vertixPolygon.paintComponent(g);
 		}
+	}
+
+	public boolean getColorChange(){
+		return colorChange;
 	}
 	public Color getColor(){
 		return color;
@@ -80,8 +102,9 @@ public class GraphicsPolygon extends GraphicsBaseclass {
 	}
 
 	@Override
-	public GraphicShape newShape(Color color, int sides, Point center, int radius, double rotation, double recursionFactor) {
-		return new GraphicsPolygon(color, sides, center, radius, rotation, recursionFactor);
+	public GraphicShape newShape(boolean change,Color color, int sides, Point center, int radius, double rotation, double recursionFactor) {
+		return new GraphicsPolygon(colorChange, color, sides, center, radius, rotation, recursionFactor);
 	}
-
 }
+
+

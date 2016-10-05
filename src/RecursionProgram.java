@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Checkbox;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -15,6 +16,7 @@ import java.awt.event.ActionListener;
 
 @SuppressWarnings("serial")
 public class RecursionProgram extends JFrame implements ActionListener {
+	private JCheckBox colorChange;
 	private JComboBox<String> chooseColors;
 	private JComboBox<Integer> chooseSides;
 	private JComboBox<Integer> chooseRadius;
@@ -35,7 +37,10 @@ public class RecursionProgram extends JFrame implements ActionListener {
 		else if (e.getSource().equals(chooseRadius) ) {
 			shapeContainer.setRadius( ((Integer)chooseRadius.getSelectedItem()).intValue() );
 		}
-		else if(e.getSource().equals(chooseColors)){
+		else if(e.getSource().equals(colorChange)){
+			shapeContainer.setColorChange(colorChange.isSelected());
+		}
+		else if(e.getSource().equals(chooseColors) && (!colorChange.isSelected())){
 			String selection = (String)chooseColors.getSelectedItem();
 			if(selection.equals("Red")){
 				shapeContainer.setColor(Color.RED);
@@ -45,6 +50,9 @@ public class RecursionProgram extends JFrame implements ActionListener {
 			}
 			if(selection.equals("Blue")){
 				shapeContainer.setColor(Color.BLUE);
+			}
+			if(selection.equals("Black")){
+				shapeContainer.setColor(Color.BLACK);
 			}
 		}
 		else if ( e.getSource().equals(chooseRotation) ) {
@@ -93,9 +101,12 @@ public class RecursionProgram extends JFrame implements ActionListener {
          
         JPanel buttonPanel = new JPanel();
         pane.add(buttonPanel, BorderLayout.SOUTH);
+        colorChange = new JCheckBox("Color Shift", true);
+        buttonPanel.add(colorChange);
+        colorChange.addActionListener(this);
 
         buttonPanel.add(new JLabel("Color"));
-        chooseColors = new JComboBox<String>(new String[]{"Red", "Green", "Blue"});
+        chooseColors = new JComboBox<String>(new String[]{"Red", "Green", "Blue", "Black"});
         buttonPanel.add(chooseColors);
         chooseColors.addActionListener(this);
 
