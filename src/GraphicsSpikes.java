@@ -5,6 +5,9 @@ import java.awt.Polygon;
  * A class for spikes shape, extend GraphicsBaseclass, 
  * and override GraphicShape interface which allow it to use the methods inside.
  *
+ * @author Karl Nicholas
+ * @author Calvin Lee
+ * @author Yu-Hsiang Huang
  */
 public class GraphicsSpikes extends GraphicsBaseclass {
 	private final GraphicShape[] vertixCircles;
@@ -12,12 +15,14 @@ public class GraphicsSpikes extends GraphicsBaseclass {
 	private Polygon[] spikes;
 	private int[] xVertices;
 	private int[] yVertices;
-
+	
+	//constructor for GraphicsSpikes class, invoke the instance data from ShapeContainer
 	public GraphicsSpikes(boolean change, Color color,int sides, Point center, int radius, double rotation, double recursionFactor, int counter) {
 		super(change, color, sides, center, radius, rotation, recursionFactor, counter);
 		vertixCircles = new GraphicsSpikes[sides];
 		spikes = new Polygon[sides];
 		
+		//calculation for spikes 
 		double slice = (2*Math.PI)/((double)sides);
 		xVertices = new int[sides];
 		yVertices = new int[sides];
