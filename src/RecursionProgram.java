@@ -1,6 +1,9 @@
 
 /*
- * HelloWorldSwing.java requires no other files. 
+ * HelloWorldSwing.java requires no other files.
+ *
+ * A class for the Panel.
+ *
  */
 
 import javax.swing.*;
