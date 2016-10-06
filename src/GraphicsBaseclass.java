@@ -4,23 +4,10 @@ import java.awt.Color;
  * to use the methods inside.
  *
  */
-public abstract class GraphicsBaseclass implements GraphicShape {
-	
-	//use protected final to keep instance data for subclasses
-	protected final boolean colorChange;
-	protected final Color color;
-	protected final int radius, sides;
-	protected final double rotation;
-	protected final double recursionFactor;
-	protected int counter;
-	
+public class GraphicsBaseclass extends GraphicShape {
+		
 	public GraphicsBaseclass(boolean change, Color color, int sides, Point center, int radius, double rotation, double recursionFactor, int counter) {
-		this.colorChange = change;
-		this.radius = radius;
-		this.sides = sides;
-		this.rotation = rotation;
-		this.recursionFactor = recursionFactor;
-		this.counter = counter;
+		super(change, color, sides, center, radius, rotation, recursionFactor, counter);
 		if (colorChange) {
 /*			
 			if (radius < 10) {
@@ -37,7 +24,9 @@ public abstract class GraphicsBaseclass implements GraphicShape {
 				this.color = Color.MAGENTA;
 			}
 */			
-			//use switch to break other colors once we chose one 
+			/*use switch to break other colors once we chose one
+				the counters is tied to the number of recursive iterations.  
+			*/ 
 			switch (++this.counter) {
 			case 1:
 				this.color = Color.MAGENTA;
@@ -71,7 +60,7 @@ public abstract class GraphicsBaseclass implements GraphicShape {
 			int[] xpoints = baseShape.getXPoints();
 			int[] ypoints = baseShape.getYPoints();
 			for ( int i=0; i < xpoints.length; ++i ) { //use for loop to make the shape recursivly
-				GraphicShape p = baseShape.newShape(
+				GraphicShape p = new GraphicShape( 
 					baseShape.getColorChange(),
 					baseShape.getColor(),
 					baseShape.getSides(), 
@@ -85,8 +74,5 @@ public abstract class GraphicsBaseclass implements GraphicShape {
 			}
 		}
 	}
-	@Override
-	public int getCounter() {
-		return counter;
-	}
+
 }

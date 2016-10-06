@@ -6,12 +6,12 @@ import java.awt.Polygon;
  *
  */
 public class GraphicsPolygon extends GraphicsBaseclass {
-	private final GraphicShape[] vertixPolygons;
+	
 	private final Polygon polygon;
 
 	public GraphicsPolygon(boolean change, Color color, int sides, Point center, int radius, double rotation, double recursionFactor, int counter) {
 		super(change, color, sides, center, radius, rotation, recursionFactor, counter);
-		vertixPolygons = new GraphicsPolygon[sides];
+		vertixCircles = new GraphicsPolygon[sides];
 
 		double slice = (2 * Math.PI) / ((double) sides);
 		int[] xVertices = new int[sides];
@@ -30,58 +30,23 @@ public class GraphicsPolygon extends GraphicsBaseclass {
 		g.fillPolygon(polygon);
 		g.setColor(Color.GRAY);
 		g.drawPolygon(polygon);
-		for (GraphicShape vertixPolygon : vertixPolygons) {
+		for (GraphicShape vertixPolygon : vertixCircles) {
 			if (vertixPolygon != null)
 				vertixPolygon.paintComponent(g);
 		}
 	}
 
+	/*
+		Overrides the GraphicShape method to take param for a polygon.
+		@param change @return a boolean
+	    @param color	@return color.
+	    @param sides, Point center		@return the side and point center of the new shape
+	    @param radius	@return the radius of the new shape
+	    @param rotation	@return the rotation of the new shape
+	    @param recursionFactor	@return the recursionFactor of the new shape
+	*/
 	@Override
-	public boolean getColorChange() {
-		return colorChange;
-	}
-
-	@Override
-	public Color getColor() {
-		return color;
-	}
-
-	@Override
-	public int getRadius() {
-		return radius;
-	}
-
-	@Override
-	public int getSides() {
-		return sides;
-	}
-
-	@Override
-	public double getRotation() {
-		return rotation;
-	}
-
-	@Override
-	public double getRecursionFactor() {
-		return recursionFactor;
-	}
-
-	public void setVertixShape(int index, GraphicShape graphicShape) {
-		vertixPolygons[index] = graphicShape;
-	}
-
-	@Override
-	public int[] getXPoints() {
-		return polygon.xpoints;
-	}
-
-	@Override
-	public int[] getYPoints() {
-		return polygon.ypoints;
-	}
-
-	@Override
-	public GraphicShape newShape(boolean change, Color color, int sides, Point center, int radius, double rotation, double recursionFactor, int counter) {
+	public GraphicShape(boolean change, Color color, int sides, Point center, int radius, double rotation, double recursionFactor, int counter) {
 		return new GraphicsPolygon(colorChange, color, sides, center, radius, rotation, recursionFactor, counter);
 	}
 }
