@@ -5,17 +5,18 @@ import java.awt.Graphics2D;
  * A GraphicShape interface describes the operations of the graphic shape, and allow user to use. 
  * 
  * @author Karl Nicholas
- * @author Calvin 
+ * @author Calvin Lee
+ * @author Yu-Hsiang Huang
  */
 public interface GraphicShape {
-	/** Custom painting used in GraphicsPolygon class
+	/** Custom painting used in GraphicsPolygon class.
 	    @param g 
-	    	The object to get the method in GraphicsPolygon class*/
+	    	The object to get the method in GraphicsPolygon class.*/
 	public void paintComponent(Graphics2D g);
 	
-	/** To make the shape recursive
+	/** To make the shape recursive.
 	    @param baseShape 
-	    	The object take the base shape*/
+	    	The object take the base shape.*/
 	public void recurseShape(GraphicShape baseShape);
 	
 	/** Gets the x point.
@@ -55,11 +56,16 @@ public interface GraphicShape {
 	public void setVertixShape(int i, GraphicShape p);
 	
 	/** A new GraphicShape method take those param for a new shape.
-	    @param color	@return color.
-	    @param sides, Point center		@return the side and point center of the new shape
-	    @param radius	@return the radius of the new shape
-	    @param rotation	@return the rotation of the new shape
-	    @param recursionFactor	@return the recursionFactor of the new shape*/
+	    @param color	
+	    	@return color.
+	    @param sides, Point center		
+	    	@return the side and point center of the new shape
+	    @param radius	
+	    	@return the radius of the new shape
+	    @param rotation	
+	    	@return the rotation of the new shape
+	    @param recursionFactor	
+	    	@return the recursionFactor of the new shape*/
 	public GraphicShape newShape(boolean change,Color color, int sides, Point center, int radius, double rotation, double recursionFactor, int counter);
 	public int getCounter();
 }
