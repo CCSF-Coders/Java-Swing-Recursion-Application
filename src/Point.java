@@ -5,10 +5,10 @@
  * @author Karl Nicholas
  *
  */
-public class Vertix {
+public class Point {
 	private final int x;
 	private final int y;
-	public Vertix(int x, int y) {
+	public Point(int x, int y) {
 		super();
 		this.x = x;
 		this.y = y;
