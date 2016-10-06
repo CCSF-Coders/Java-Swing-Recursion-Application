@@ -4,6 +4,10 @@ import java.awt.geom.CubicCurve2D;
 /**
  * This is for curves, it extends GraphicsBaseclass as its child class. 
  * Here also override GraphicShape interface to use those methods.
+ *
+ * @author Karl Nicholas
+ * @author Calvin Lee
+ * @author Yu-Hsiang Huang
  */
 public class GraphicsCurves extends GraphicsBaseclass {
 	private final GraphicShape[] vertixCircles;
