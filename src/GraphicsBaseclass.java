@@ -1,6 +1,12 @@
 import java.awt.Color;
-
+/**
+ * This class is to create the grapgics base and implements GraphicShape interface 
+ * to use the methods inside.
+ *
+ */
 public abstract class GraphicsBaseclass implements GraphicShape {
+	
+	//use protected final to keep instance data for subclasses
 	protected final boolean colorChange;
 	protected final Color color;
 	protected final int radius, sides;
@@ -31,6 +37,7 @@ public abstract class GraphicsBaseclass implements GraphicShape {
 				this.color = Color.MAGENTA;
 			}
 */			
+			//use switch to break other colors once we chose one 
 			switch (++this.counter) {
 			case 1:
 				this.color = Color.MAGENTA;
@@ -56,13 +63,14 @@ public abstract class GraphicsBaseclass implements GraphicShape {
 		}
 		
 	}
-
+	
+	//override the recurseShape from GraphicShape interface
 	@Override
 	public void recurseShape(GraphicShape baseShape) {
-		if ( baseShape.getRadius() > 10 ) {
+		if ( baseShape.getRadius() > 10 ) { //if the radius > 10, the x&y point equals to baseShape
 			int[] xpoints = baseShape.getXPoints();
 			int[] ypoints = baseShape.getYPoints();
-			for ( int i=0; i < xpoints.length; ++i ) {
+			for ( int i=0; i < xpoints.length; ++i ) { //use for loop to make the shape recursivly
 				GraphicShape p = baseShape.newShape(
 					baseShape.getColorChange(),
 					baseShape.getColor(),
