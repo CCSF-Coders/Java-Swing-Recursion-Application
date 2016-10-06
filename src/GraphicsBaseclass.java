@@ -1,6 +1,6 @@
 import java.awt.Color;
 /**
- * This class is to create the grapgics base and implements GraphicShape interface 
+ * This class is to create the graphics base and implements GraphicShape interface 
  * to use the methods inside.
  * 
  * @author Karl Nicholas
@@ -25,21 +25,6 @@ public abstract class GraphicsBaseclass implements GraphicShape {
 		this.recursionFactor = recursionFactor;
 		this.counter = counter;
 		if (colorChange) {
-/*			
-			if (radius < 10) {
-				this.color = Color.RED;
-			} else if (radius >= 10 && radius < 20) {
-				this.color = Color.YELLOW;
-			} else if (radius >= 20 && radius < 40) {
-				this.color = Color.GREEN;
-			} else if (radius >= 40 && radius < 80) {
-				this.color = Color.CYAN;
-			} else if (radius >= 80 && radius < 160) {
-				this.color = Color.BLUE;
-			} else {
-				this.color = Color.MAGENTA;
-			}
-*/			
 			//use switch to break other colors once we chose one 
 			switch (++this.counter) {
 			case 1:
@@ -67,13 +52,23 @@ public abstract class GraphicsBaseclass implements GraphicShape {
 		
 	}
 	
-	//override the recurseShape from GraphicShape interface
+	/**
+	 * Override the recurseShape from GraphicShape interface
+	 * 
+	 * implementation of recursion function. This will recursively build shapes dividing 
+	 * the radius by the "recursionFactor" each time until the radius of a shape is less than
+	 * 10 units.
+	 * 
+	 * @param GraphicShape baseShape to recurse. 
+	 */
 	@Override
 	public void recurseShape(GraphicShape baseShape) {
-		if ( baseShape.getRadius() > 10 ) { //if the radius > 10, the x&y point equals to baseShape
+		//if the radius > 10, the x&y point equals to baseShape
+		if ( baseShape.getRadius() > 10 ) { 
 			int[] xpoints = baseShape.getXPoints();
 			int[] ypoints = baseShape.getYPoints();
-			for ( int i=0; i < xpoints.length; ++i ) { //use for loop to make the shape recursivly
+			//use for loop to make the shape recursively
+			for ( int i=0; i < xpoints.length; ++i ) { 
 				GraphicShape p = baseShape.newShape(
 					baseShape.getColorChange(),
 					baseShape.getColor(),
