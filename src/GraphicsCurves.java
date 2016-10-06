@@ -1,7 +1,10 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.CubicCurve2D;
-
+/**
+ * This is for curves, it extends GraphicsBaseclass as its child class. 
+ * Here also override GraphicShape interface to use those methods.
+ */
 public class GraphicsCurves extends GraphicsBaseclass {
 	private final GraphicShape[] vertixCircles;
 
