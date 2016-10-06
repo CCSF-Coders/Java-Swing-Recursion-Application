@@ -2,7 +2,10 @@ import java.awt.Color;
 /**
  * This class is to create the grapgics base and implements GraphicShape interface 
  * to use the methods inside.
- *
+ * 
+ * @author Karl Nicholas
+ * @author Calvin Lee
+ * @author Yu-Hsiang Huang
  */
 public abstract class GraphicsBaseclass implements GraphicShape {
 	
