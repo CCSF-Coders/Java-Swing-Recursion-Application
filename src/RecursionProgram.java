@@ -2,8 +2,11 @@
 /*
  * HelloWorldSwing.java requires no other files.
  *
- * A class for the Panel.
+ * A class for the shapes Panel.
  *
+ * @author Karl Nicholas
+ * @author Calvin Lee
+ * @author Yu-Hsiang Huang
  */
 
 import javax.swing.*;
@@ -226,7 +229,7 @@ public class RecursionProgram extends JFrame implements ActionListener {
             }
         });
 	}
-	public static void main(String[] args) {
+	public static void main(String[] args) {//main function for output the console
 		new RecursionProgram().run();
 	}
 }
