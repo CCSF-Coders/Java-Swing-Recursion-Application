@@ -1,7 +1,9 @@
 import java.awt.Graphics2D;
-
 import java.awt.Color;
-
+/**
+ * This class contains all the shape's basic instance data.
+ * Allows the shapes changing while user change the color, side, radius, or rotation.
+ */
 public class ShapeContainer {
 	private Color color;
 	private int sides;
@@ -43,7 +45,7 @@ public class ShapeContainer {
 		}
 		rotation = radius;
 	}
-	public void rebuild() {
+	public void rebuild() { //the calculation for each shape
 		switch (shape) {
 		case Circle:
 			baseShape = new GraphicsCircles(colorChange, color ,sides, new Point(500/2, 500/2), radius, ((double)rotation)*(Math.PI*2.0)/360.0, recurseFactor, 0);
