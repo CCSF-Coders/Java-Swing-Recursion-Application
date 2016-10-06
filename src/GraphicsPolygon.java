@@ -1,7 +1,10 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
-
+/**
+ * A class for polygon shape, extend GraphicsBaseclass, and override GraphicShape interface as well.
+ *
+ */
 public class GraphicsPolygon extends GraphicsBaseclass {
 	private final GraphicShape[] vertixPolygons;
 	private final Polygon polygon;
