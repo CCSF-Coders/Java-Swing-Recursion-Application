@@ -7,22 +7,16 @@ import java.awt.Graphics2D;
  * @author Karl Nicholas
  * @author Calvin 
  */
-public class GraphicShape<T> {
+public abstract class GraphicShape {
 
 	//use protected final to keep instance data for subclasses
 	protected boolean colorChange;
 	protected Color color;
 	protected int radius, sides;
 	protected double rotation;
-	protected double recursionFactor;
+	protected double recursionFactor; 
 	protected int counter;
-	protected int[] xVertices;
-	protected int[] yVertices;
-	protected GraphicShape[]<T> vertixCircles;
-	protected Point initCenter;
-	protected double slice;
 	
-
 	/** A new GraphicShape method take those param for a new shape.
 	    @param color	@return color.
 	    @param sides, Point center		@return the side and point center of the new shape
@@ -36,37 +30,25 @@ public class GraphicShape<T> {
 		this.rotation = rotation;
 		this.recursionFactor = recursionFactor;
 		this.counter = counter;
-		this.initCenter = center;
+	}
 
-		//calculate the x, y vertices
-		slice = (2*Math.PI)/((double)sides);
-		xVertices = new int[sides];
-		yVertices = new int[sides];
-		vertixCircles = new T[sides];
-		}
 	/** Custom painting used in GraphicsPolygon class
 	    @param g 
 	    	The object to get the method in GraphicsPolygon class*/
-	public void paintComponent(Graphics2D g){};
+	public abstract void paintComponent(Graphics2D g);
 	
 	/** To make the shape recursive
 	    @param baseShape 
 	    	The object take the base shape*/
-	public void recurseShape(GraphicShape baseShape){};
+	public abstract void recurseShape(GraphicShape baseShape);
+
+	public abstract int[] getXPoints();
+
+	public abstract int[] getYPoints();
+
+	public abstract void setVertixShape(int index, GraphicShape graphicShape);
 
 	public void newShape(){};
-	
-	/** Gets the x point.
-	    @return the x point.*/
-	public int[] getXPoints() {
-		return this.xVertices;
-	}
-	
-	/** Gets the y point.
-	    @return the y point.*/
-	public int[] getYPoints() {
-		return this.yVertices;
-	}
 	
 	/** Gets the shape's radius.
 	    @return the integer of the shape's radius.*/
@@ -103,21 +85,9 @@ public class GraphicShape<T> {
 	public double getRecursionFactor() {
 		return this.recursionFactor;
 	}
-	
-	/** To set the point of the shape
-	    @param i 
-	    	The integer is the index of VertixShape.
-	    @param g 
-	    	The object to get the method in GraphicShape interface*/
-	public void setVertixShape(int index, GraphicShape graphicShape) {
-		vertixCircles[index] = graphicShape;
-	}
 
-	/* Retrieves the counter needed to for the color change. 
-		@return Returns the current counter.
-	*/
-	public int getCounter() {
-		return this.counter;
-	}
+	public abstract int getCounter();
+
+	public abstract GraphicShape newShape(boolean change, Color color, int sides, Point center, int radius, double rotation, double recursionFactor, int counter);
 
 }

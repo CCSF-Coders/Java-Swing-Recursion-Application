@@ -4,7 +4,7 @@ import java.awt.Color;
  * to use the methods inside.
  *
  */
-public class GraphicsBaseclass extends GraphicShape {
+public abstract class GraphicsBaseclass extends GraphicShape {
 		
 	public GraphicsBaseclass(boolean change, Color color, int sides, Point center, int radius, double rotation, double recursionFactor, int counter) {
 		super(change, color, sides, center, radius, rotation, recursionFactor, counter);
@@ -53,25 +53,14 @@ public class GraphicsBaseclass extends GraphicShape {
 		
 	}
 	
-	/** To set the point of the shape
-	    @param i 
-	    	The integer is the index of VertixShape.
-	    @param g 
-	    	The object to get the method in GraphicShape interface*/
-	public void setVertixShape(int index, GraphicShape graphicShape) {
-		vertixCircles[index] = graphicShape;
-	}
-
 	//override the recurseShape from GraphicShape interface
 	@Override
 	public void recurseShape(GraphicShape baseShape) {
 		if ( baseShape.getRadius() > 10 ) { //if the radius > 10, the x&y point equals to baseShape
 			int[] xpoints = baseShape.getXPoints();
 			int[] ypoints = baseShape.getYPoints();
-			System.out.println(xpoints);
-			System.out.println(ypoints);
 			for ( int i=0; i < xpoints.length; ++i ) { //use for loop to make the shape recursivly
-				GraphicShape p = new GraphicShape( 
+				GraphicShape p = baseShape.newShape( 
 					baseShape.getColorChange(),
 					baseShape.getColor(),
 					baseShape.getSides(), 
@@ -85,5 +74,15 @@ public class GraphicsBaseclass extends GraphicShape {
 			}
 		}
 	}
+
+	/* Retrieves the counter needed to for the color change. 
+		@return Returns the current counter.
+	*/
+
+	@Override
+	public int getCounter() {
+		return this.counter;
+	}
+
 
 }
