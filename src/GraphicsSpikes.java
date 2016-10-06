@@ -7,7 +7,6 @@ import java.awt.Polygon;
  *
  */
 public class GraphicsSpikes extends GraphicsBaseclass {
-	private final GraphicShape[] vertixCircles;
 
 	private Polygon[] spikes;
 
@@ -15,10 +14,6 @@ public class GraphicsSpikes extends GraphicsBaseclass {
 		super(change, color, sides, center, radius, rotation, recursionFactor, counter);
 		vertixCircles = new GraphicsSpikes[sides];
 		spikes = new Polygon[sides];
-		
-		double slice = (2*Math.PI)/((double)sides);
-		xVertices = new int[sides];
-		yVertices = new int[sides];
 		
 		for ( int s=0; s < sides; ++s ){
 			xVertices[s] = (int)(center.getX()-(Math.cos((double)s*slice+rotation)*radius));
@@ -50,9 +45,9 @@ public class GraphicsSpikes extends GraphicsBaseclass {
 		}
 	}
 
-	@Override
+	/*@Override
 	public GraphicShape(boolean change, Color color, int sides, Point center, int radius, double rotation, double recursionFactor, int counter) {
 		return new GraphicsSpikes(colorChange, color, sides, center, radius, rotation, recursionFactor, counter);
-	}
+	}*/
 
 }

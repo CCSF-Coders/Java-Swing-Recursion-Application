@@ -7,18 +7,12 @@ import java.awt.geom.Ellipse2D;
  */
 
 public class GraphicsCircles extends GraphicsBaseclass {
-	private final GraphicShape[] vertixCircles;
 
 	private final Ellipse2D.Float ellipse;
 
 	public GraphicsCircles(boolean change, Color color,int sides, Point center, int radius, double rotation, double recursionFactor, int counter) {
 		super(change, color, sides, center, radius, rotation, recursionFactor, counter);
 		vertixCircles = new GraphicsCircles[sides]; 
-		
-		//calculate the x, y vertices
-		double slice = (2*Math.PI)/((double)sides);
-		xVertices = new int[sides];
-		yVertices = new int[sides];
 		
 		for ( int s=0; s < sides; ++s ) {
 			xVertices[s] = (int)(center.getX()-(Math.cos((double)s*slice+rotation)*radius));
@@ -39,9 +33,9 @@ public class GraphicsCircles extends GraphicsBaseclass {
 		}
 	}
 
-	@Override
+	/*@Override
 	public GraphicShape (boolean change, Color color, int sides, Point center, int radius, double rotation, double recursionFactor, int counter) {
 		return new GraphicsCircles(colorChange, color, sides, center, radius, rotation, recursionFactor, counter);
-	}
+	}*/
 
 }

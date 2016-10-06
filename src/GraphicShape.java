@@ -7,7 +7,7 @@ import java.awt.Graphics2D;
  * @author Karl Nicholas
  * @author Calvin 
  */
-public class GraphicShape {
+public class GraphicShape<T> {
 
 	//use protected final to keep instance data for subclasses
 	protected boolean colorChange;
@@ -18,7 +18,10 @@ public class GraphicShape {
 	protected int counter;
 	protected int[] xVertices;
 	protected int[] yVertices;
-	protected GraphicShape[] vertixCircles;
+	protected GraphicShape[]<T> vertixCircles;
+	protected Point initCenter;
+	protected double slice;
+	
 
 	/** A new GraphicShape method take those param for a new shape.
 	    @param color	@return color.
@@ -33,6 +36,13 @@ public class GraphicShape {
 		this.rotation = rotation;
 		this.recursionFactor = recursionFactor;
 		this.counter = counter;
+		this.initCenter = center;
+
+		//calculate the x, y vertices
+		slice = (2*Math.PI)/((double)sides);
+		xVertices = new int[sides];
+		yVertices = new int[sides];
+		vertixCircles = new T[sides];
 		}
 	/** Custom painting used in GraphicsPolygon class
 	    @param g 
@@ -49,49 +59,49 @@ public class GraphicShape {
 	/** Gets the x point.
 	    @return the x point.*/
 	public int[] getXPoints() {
-		return xVertices;
+		return this.xVertices;
 	}
 	
 	/** Gets the y point.
 	    @return the y point.*/
 	public int[] getYPoints() {
-		return yVertices;
+		return this.yVertices;
 	}
 	
 	/** Gets the shape's radius.
 	    @return the integer of the shape's radius.*/
 	public int getRadius() {
-		return radius;
+		return this.radius;
 	}
 
 	/** Gets the choice of whether or not to change colors
 		@return a boolean value to change colors or not.*/
 	public boolean getColorChange(){
-		return colorChange;
+		return this.colorChange;
 	}
 	
 	/** Gets the colors.
 	    @return the color which we invoke.*/
 	public Color getColor(){
-		return color;
+		return this.color;
 	}
 	
 	/** Gets the sides of th shape.
 	    @return the sides.*/
 	public int getSides() {
-		return sides;
+		return this.sides;
 	}
 	
 	/** Makes the  shape do rotation.
 	    @return the rotation.*/
 	public double getRotation() {
-		return rotation;
+		return this.rotation;
 	}
 	
 	/** Gets the recursion factor.
 	    @return the recursion factor.*/
 	public double getRecursionFactor() {
-		return recursionFactor;
+		return this.recursionFactor;
 	}
 	
 	/** To set the point of the shape
@@ -107,7 +117,7 @@ public class GraphicShape {
 		@return Returns the current counter.
 	*/
 	public int getCounter() {
-		return counter;
+		return this.counter;
 	}
 
 }

@@ -64,7 +64,6 @@ public class ShapeContainer {
 		
 		}
 		baseShape.recurseShape(baseShape);
-
 	}
 
 	

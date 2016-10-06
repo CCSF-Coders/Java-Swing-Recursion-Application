@@ -6,7 +6,6 @@ import java.awt.geom.CubicCurve2D;
  * Here also override GraphicShape interface to use those methods.
  */
 public class GraphicsCurves extends GraphicsBaseclass {
-	private final GraphicShape[] vertixCircles;
 
 	private CubicCurve2D.Float[] spikes;
 
@@ -14,10 +13,6 @@ public class GraphicsCurves extends GraphicsBaseclass {
 		super(change, color, sides, center, radius, rotation, recursionFactor, counter);
 		vertixCircles = new GraphicsCurves[sides];
 		spikes = new CubicCurve2D.Float[sides];
-
-		double slice = (2*Math.PI)/((double)sides);
-		xVertices = new int[sides];
-		yVertices = new int[sides];
 		
 		for ( int s=0; s < sides; ++s ) {
 			xVertices[s] = (int)(center.getX()-(Math.cos((double)s*slice+rotation)*radius));
@@ -46,9 +41,9 @@ public class GraphicsCurves extends GraphicsBaseclass {
 		}
 	}
 
-	@Override
+	/*@Override
 	public GraphicShape(boolean change, Color color, int sides, Point center, int radius, double rotation, double recursionFactor, int counter) {
 		return new GraphicsCurves(colorChange, color, sides, center, radius, rotation, recursionFactor, counter);
-	}
+	}*/
 
 }
