@@ -1,7 +1,11 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
-
+/**
+ * A class for spikes shape, extend GraphicsBaseclass, 
+ * and override GraphicShape interface which allow it to use the methods inside.
+ *
+ */
 public class GraphicsSpikes extends GraphicsBaseclass {
 	private final GraphicShape[] vertixCircles;
 
@@ -18,10 +22,10 @@ public class GraphicsSpikes extends GraphicsBaseclass {
 		xVertices = new int[sides];
 		yVertices = new int[sides];
 		
-		for ( int s=0; s < sides; ++s ) {
+		for ( int s=0; s < sides; ++s ){
 			xVertices[s] = (int)(center.getX()-(Math.cos((double)s*slice+rotation)*radius));
 			yVertices[s] = (int)(center.getY()-(Math.sin((double)s*slice+rotation)*radius));
-			int[] xspikes = new int[3];
+			int[] xspikes = new int[3]; //create new index for position 3
 			int[] yspikes = new int[3];
 			xspikes[0] = (int)(center.getX()-(Math.cos((double)s*slice+(rotation+Math.PI/2))*(radius/10+1)));
 			yspikes[0] = (int)(center.getY()-(Math.sin((double)s*slice+(rotation+Math.PI/2))*(radius/10+1)));
