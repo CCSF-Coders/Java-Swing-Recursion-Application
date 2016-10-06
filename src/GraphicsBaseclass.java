@@ -59,7 +59,7 @@ public abstract class GraphicsBaseclass implements GraphicShape {
 	 * the radius by the "recursionFactor" each time until the radius of a shape is less than
 	 * 10 units.
 	 * 
-	 * @param GraphicShape baseShape to recurse. 
+	 * @param baseShape GraphicShape to recurse. 
 	 */
 	@Override
 	public void recurseShape(GraphicShape baseShape) {
