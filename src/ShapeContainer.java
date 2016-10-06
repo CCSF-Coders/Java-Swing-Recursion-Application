@@ -3,6 +3,10 @@ import java.awt.Color;
 /**
  * This class contains all the shape's basic instance data.
  * Allows the shapes changing while user change the color, side, radius, or rotation.
+ *
+ * @author Karl Nicholas
+ * @author Calvin Lee
+ * @author Yu-Hsiang Huang
  */
 public class ShapeContainer {
 	private Color color;
@@ -16,7 +20,7 @@ public class ShapeContainer {
 	private ADIR aDir;
 	private RecursionProgram.SHAPES shape;
 	
-	public ShapeContainer() {
+	public ShapeContainer() {//actual data for the shapes
 		colorChange = true;	
 		color = Color.RED;
 		sides = 4;
@@ -27,7 +31,7 @@ public class ShapeContainer {
 		shape = RecursionProgram.SHAPES.Polygon;
 		rebuild();
 	}
-	public void animateStep() {
+	public void animateStep() {//set the move of the animation steps
 		if ( aDir == ADIR.DEC ) {
 			radius = radius - 2;
 			if ( radius < 0 ) {
