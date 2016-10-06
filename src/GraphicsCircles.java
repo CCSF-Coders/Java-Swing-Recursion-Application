@@ -3,7 +3,10 @@ import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 /**
  * This class is circle shape, it extends GraphicsBaseclass as its child class.
- *
+ * *
+ * @author Karl Nicholas
+ * @author Calvin Lee
+ * @author Yu-Hsiang Huang
  */
 
 public class GraphicsCircles extends GraphicsBaseclass {
@@ -13,6 +16,7 @@ public class GraphicsCircles extends GraphicsBaseclass {
 	private int[] xVertices;
 	private int[] yVertices;
 
+	//circle constructor, invoke the instance data from ShapeContainer
 	public GraphicsCircles(boolean change, Color color,int sides, Point center, int radius, double rotation, double recursionFactor, int counter) {
 		super(change, color, sides, center, radius, rotation, recursionFactor, counter);
 		vertixCircles = new GraphicsCircles[sides]; 
