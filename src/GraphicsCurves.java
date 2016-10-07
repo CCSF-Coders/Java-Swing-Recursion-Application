@@ -16,7 +16,8 @@ public class GraphicsCurves extends GraphicsBaseclass {
 
 	private double slice;
 	private CubicCurve2D.Float[] spikes;
-
+	
+	//Curves constructor, invoke the instance data from ShapeContainer
 	public GraphicsCurves(boolean change, Color color,int sides, Point center, int radius, double rotation, double recursionFactor, int counter) {
 		super(change, color, sides, center, radius, rotation, recursionFactor, counter);
 		vertixCircles = new GraphicsCurves[sides];
@@ -42,7 +43,8 @@ public class GraphicsCurves extends GraphicsBaseclass {
 			spikes[s] = new CubicCurve2D.Float(x1, y1, ctrlx1, ctrly1, ctrlx2, ctrly2, x2, y2);
 		}
 	}
-
+	
+	//override paintComponent 
 	@Override
 	public void paintComponent(Graphics2D g) {
 		g.setColor(this.color);
