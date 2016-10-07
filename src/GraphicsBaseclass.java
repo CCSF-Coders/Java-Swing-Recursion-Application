@@ -7,25 +7,14 @@ import java.awt.Color;
  * @author Calvin Lee
  * @author Yu-Hsiang Huang
  */
-public abstract class GraphicsBaseclass implements GraphicShape {
-	
-	//use protected final to keep instance data for subclasses
-	protected final boolean colorChange;
-	protected final Color color;
-	protected final int radius, sides;
-	protected final double rotation;
-	protected final double recursionFactor;
-	protected int counter;
-	
+public abstract class GraphicsBaseclass extends GraphicShape {
+		
 	public GraphicsBaseclass(boolean change, Color color, int sides, Point center, int radius, double rotation, double recursionFactor, int counter) {
-		this.colorChange = change;
-		this.radius = radius;
-		this.sides = sides;
-		this.rotation = rotation;
-		this.recursionFactor = recursionFactor;
-		this.counter = counter;
+		super(change, color, sides, center, radius, rotation, recursionFactor, counter);
 		if (colorChange) {
-			//use switch to break other colors once we chose one 
+			/*use switch to break other colors once we chose one
+				the counters is tied to the number of recursive iterations.  
+			*/ 
 			switch (++this.counter) {
 			case 1:
 				this.color = Color.MAGENTA;
@@ -69,7 +58,7 @@ public abstract class GraphicsBaseclass implements GraphicShape {
 			int[] ypoints = baseShape.getYPoints();
 			//use for loop to make the shape recursively
 			for ( int i=0; i < xpoints.length; ++i ) { 
-				GraphicShape p = baseShape.newShape(
+				GraphicShape p = baseShape.newShape( 
 					baseShape.getColorChange(),
 					baseShape.getColor(),
 					baseShape.getSides(), 
@@ -83,6 +72,11 @@ public abstract class GraphicsBaseclass implements GraphicShape {
 			}
 		}
 	}
+
+	/* Retrieves the counter needed to for the color change. 
+		@return Returns the current counter.
+	*/
+
 	@Override
 	public int getCounter() {
 		return counter;

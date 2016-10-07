@@ -10,20 +10,23 @@ import java.awt.geom.CubicCurve2D;
  * @author Yu-Hsiang Huang
  */
 public class GraphicsCurves extends GraphicsBaseclass {
-	private final GraphicShape[] vertixCircles;
-
-	private CubicCurve2D.Float[] spikes;
 	private int[] xVertices;
 	private int[] yVertices;
+	private GraphicShape[] vertixCircles;
+
+	private double slice;
+	private CubicCurve2D.Float[] spikes;
 
 	public GraphicsCurves(boolean change, Color color,int sides, Point center, int radius, double rotation, double recursionFactor, int counter) {
 		super(change, color, sides, center, radius, rotation, recursionFactor, counter);
 		vertixCircles = new GraphicsCurves[sides];
 		spikes = new CubicCurve2D.Float[sides];
 
-		double slice = (2*Math.PI)/((double)sides);
+
+		slice = (2*Math.PI)/((double)sides);
 		xVertices = new int[sides];
 		yVertices = new int[sides];
+		vertixCircles = new GraphicShape[sides];
 		
 		for ( int s=0; s < sides; ++s ) {
 			xVertices[s] = (int)(center.getX()-(Math.cos((double)s*slice+rotation)*radius));
@@ -51,41 +54,29 @@ public class GraphicsCurves extends GraphicsBaseclass {
 			if ( vertixCircle != null ) vertixCircle.paintComponent(g);
 		}
 	}
+
+	/** Gets the x point.
+	    @return the x point.*/
 	@Override
-	public boolean getColorChange(){
-		return colorChange;
+	public int[] getXPoints() {
+		return this.xVertices;
 	}
+	
+	/** Gets the y point.
+	    @return the y point.*/
 	@Override
-	public Color getColor(){
-		return color;
+	public int[] getYPoints() {
+		return this.yVertices;
 	}
-	@Override
-	public int getRadius() {
-		return radius;
-	}
-	@Override
-	public int getSides() {
-		return sides;
-	}
-	@Override
-	public double getRotation() {
-		return rotation;
-	}
-	@Override
-	public double getRecursionFactor() {
-		return recursionFactor;
-	}
+	
+	/** To set the point of the shape
+	    @param i 
+	    	The integer is the index of VertixShape.
+	    @param g 
+	    	The object to get the method in GraphicShape interface*/
 	@Override
 	public void setVertixShape(int index, GraphicShape graphicShape) {
 		vertixCircles[index] = graphicShape;
-	}
-	@Override
-	public int[] getXPoints() {
-		return xVertices;
-	}
-	@Override
-	public int[] getYPoints() {
-		return yVertices;
 	}
 
 	@Override

@@ -68,11 +68,15 @@ public class ShapeContainer {
 		
 		}
 		baseShape.recurseShape(baseShape);
-
 	}
+
+	
 	public void paintComponents(Graphics2D g) {
 		baseShape.paintComponent(g);
 	}
+	/*
+		Appropriate getters and setters needed for the arguments of each shape's methods.  
+	*/
 	public void setColorChange(boolean change){
 		this.colorChange = change;
 	}
