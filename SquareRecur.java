@@ -6,7 +6,6 @@
  * @author Calvin Lee
  * @author Yu-Hsiang Huang
  */
- */
 public class SquareRecur {
     public static void main(String[] args) {
 
