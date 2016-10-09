@@ -67,5 +67,8 @@ public interface GraphicShape {
 	    @param recursionFactor	
 	    	@return the recursionFactor of the new shape*/
 	public GraphicShape newShape(boolean change,Color color, int sides, Point center, int radius, double rotation, double recursionFactor, int counter);
+	/** Gives back the counter/current iteration of the recursive call
+		@return Returns the counter. 
+	*/
 	public int getCounter();
 }
