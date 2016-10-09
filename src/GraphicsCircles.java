@@ -45,30 +45,6 @@ public class GraphicsCircles extends GraphicsBaseclass {
 		}
 	}
 	@Override
-	public boolean getColorChange(){
-		return colorChange;
-	}
-	@Override
-	public Color getColor(){
-		return color;
-	}
-	@Override
-	public int getRadius() {
-		return radius;
-	}
-	@Override
-	public int getSides() {
-		return sides;
-	}
-	@Override
-	public double getRotation() {
-		return rotation;
-	}
-	@Override
-	public double getRecursionFactor() {
-		return recursionFactor;
-	}
-	@Override
 	public void setVertixShape(int index, GraphicShape graphicShape) {
 		vertixCircles[index] = graphicShape;
 	}
