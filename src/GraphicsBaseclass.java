@@ -60,7 +60,7 @@ public abstract class GraphicsBaseclass implements GraphicShape {
 	 * 10 units.
 	 * 
 	 * @param baseShape GraphicShape to recurse. 
-	 * @param minimumRadius 
+	 * @param minimumRadius to recurse to.
 	 */
 	@Override
 	public void recurseShape(GraphicShape baseShape, int minimumRadius) {
