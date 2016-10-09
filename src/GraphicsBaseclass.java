@@ -60,11 +60,12 @@ public abstract class GraphicsBaseclass implements GraphicShape {
 	 * 10 units.
 	 * 
 	 * @param baseShape GraphicShape to recurse. 
+	 * @param minimumRadius 
 	 */
 	@Override
-	public void recurseShape(GraphicShape baseShape) {
-		//if the radius > 10, the x&y point equals to baseShape
-		if ( baseShape.getRadius() > 10 ) { 
+	public void recurseShape(GraphicShape baseShape, int minimumRadius) {
+		//if the radius > minimumRadius, the x&y point equals to baseShape
+		if ( baseShape.getRadius() > minimumRadius ) { 
 			int[] xpoints = baseShape.getXPoints();
 			int[] ypoints = baseShape.getYPoints();
 			//use for loop to make the shape recursively
@@ -79,7 +80,7 @@ public abstract class GraphicsBaseclass implements GraphicShape {
 					baseShape.getRecursionFactor(), 
 					baseShape.getCounter());
 				baseShape.setVertixShape(i, p);
-				recurseShape(p);
+				recurseShape(p, minimumRadius);
 			}
 		}
 	}

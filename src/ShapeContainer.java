@@ -19,7 +19,7 @@ public class ShapeContainer {
 	enum ADIR{INC, DEC};
 	private ADIR aDir;
 	private RecursionProgram.SHAPES shape;
-	public static final int SquareRadius = 10;
+	private int minimumRadius;
 	
 	public ShapeContainer() {//actual data for the shapes
 		colorChange = true;	
@@ -28,7 +28,7 @@ public class ShapeContainer {
 		radius = 150;
 		rotation = 45;
 		recurseFactor = 2;
-		this.SquareRadius = SquareRadius;
+		minimumRadius = 10;
 		aDir = ADIR.DEC;
 		shape = RecursionProgram.SHAPES.Polygon;
 		rebuild();
@@ -69,7 +69,7 @@ public class ShapeContainer {
 			break;
 		
 		}
-		baseShape.recurseShape(baseShape);
+		baseShape.recurseShape(baseShape, minimumRadius);
 	}
 
 	
@@ -120,5 +120,11 @@ public class ShapeContainer {
 	}
 	public void setShape(RecursionProgram.SHAPES shape) {
 		this.shape = shape;
+	}
+	public int getMinimumRadius() {
+		return minimumRadius;
+	}
+	public void setMinimumRadius(int minimumRadius) {
+		this.minimumRadius =  minimumRadius;
 	}
 }

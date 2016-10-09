@@ -33,6 +33,7 @@ public class RecursionProgram extends JFrame implements ActionListener {
 	private JComboBox<COLORS> chooseColors;
 	private JComboBox<Integer> chooseSides;
 	private JComboBox<Integer> chooseRadius;
+	private JComboBox<Integer> chooseMinimumRadius;
 	private JComboBox<Integer> chooseRotation;
 	private JComboBox<Integer> chooseRecurseFactor;
 	private JComboBox<SHAPES> chooseShape;
@@ -50,6 +51,9 @@ public class RecursionProgram extends JFrame implements ActionListener {
 		}
 		else if (e.getSource().equals(chooseRadius) ) {
 			shapeContainer.setRadius( ((Integer)chooseRadius.getSelectedItem()).intValue() );
+		}
+		else if (e.getSource().equals(chooseMinimumRadius) ) {
+			shapeContainer.setMinimumRadius( ((Integer)chooseMinimumRadius.getSelectedItem()).intValue() );
 		}
 		else if(e.getSource().equals(colorChange)){
 			shapeContainer.setColorChange(colorChange.isSelected());
@@ -146,6 +150,17 @@ public class RecursionProgram extends JFrame implements ActionListener {
     	buttonPanel.add(chooseSides, c);
     	chooseSides.addActionListener(this);
 
+    	chooseRotation = new JComboBox<Integer>(new Integer[] {0,30,45,60,90});
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 0.0;
+        c.gridx = 2;
+        c.gridy = 1;
+        c.gridwidth = 1;
+    	buttonPanel.add(new JLabel("Rotation Amount"), c);
+        c.gridx = 3;
+    	buttonPanel.add(chooseRotation, c);
+    	chooseRotation.addActionListener(this);
+
     	chooseRadius = new JComboBox<Integer>(new Integer[] {50,100,150,200,250});
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0.0;
@@ -157,16 +172,16 @@ public class RecursionProgram extends JFrame implements ActionListener {
     	buttonPanel.add(chooseRadius, c);
     	chooseRadius.addActionListener(this);
 
-    	chooseRotation = new JComboBox<Integer>(new Integer[] {0,30,45,60,90});
+    	chooseMinimumRadius = new JComboBox<Integer>(new Integer[] {10,20,40,80,160});
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0.0;
-        c.gridx = 0;
-        c.gridy = 3;
+        c.gridx = 2;
+        c.gridy = 2;
         c.gridwidth = 1;
-    	buttonPanel.add(new JLabel("Rotation Amount"), c);
-        c.gridx = 1;
-    	buttonPanel.add(chooseRotation, c);
-    	chooseRotation.addActionListener(this);
+    	buttonPanel.add(new JLabel("Minimum Radius"), c);
+        c.gridx = 3;
+    	buttonPanel.add(chooseMinimumRadius, c);
+    	chooseMinimumRadius.addActionListener(this);
 
     	chooseRecurseFactor = new JComboBox<Integer>(new Integer[] {2,3,4,5,6,7,8});
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -202,6 +217,7 @@ public class RecursionProgram extends JFrame implements ActionListener {
 		chooseColors.setEnabled(!colorChange.isSelected());
 		chooseSides.setSelectedItem(shapeContainer.getSides());
 		chooseRadius.setSelectedItem(shapeContainer.getRadius());
+		chooseMinimumRadius.setSelectedItem(shapeContainer.getMinimumRadius());
 		chooseRotation.setSelectedItem(shapeContainer.getRotation());
 		chooseRecurseFactor.setSelectedItem(shapeContainer.getRecurseFactor());
 		chooseShape.setSelectedItem(shapeContainer.getShape());
