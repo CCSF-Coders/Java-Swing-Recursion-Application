@@ -1,8 +1,14 @@
 
 /*
- * HelloWorldSwing.java requires no other files.
+ * Driver program for the recursion lab.
  *
- * A class for the shapes Panel.
+ * Is the GUI and main executable for the application. 
+ * 
+ * Holds a ShapeContainer class, which acts on all the settings and holds 
+ * the base GraphicShape instance.    
+ * 
+ * Holds an Animation class which will animate the current shape if
+ * started in a Thread. 
  *
  * @author Karl Nicholas
  * @author Calvin Lee
