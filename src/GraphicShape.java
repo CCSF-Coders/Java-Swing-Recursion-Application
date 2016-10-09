@@ -15,8 +15,9 @@ public interface GraphicShape {
 	
 	/** To make the shape recursive.
 	    @param baseShape 
-	    	The object take the base shape.*/
-	public void recurseShape(GraphicShape baseShape);
+	    	The object take the base shape.
+	    @param minimumRadius to recurse down to*/
+	void recurseShape(GraphicShape baseShape, int minimumRadius);
 	
 	/** Gets the x point.
 	    @return the x point.*/
@@ -70,4 +71,5 @@ public interface GraphicShape {
 		@return Returns the counter. 
 	*/
 	public int getCounter();
+
 }
