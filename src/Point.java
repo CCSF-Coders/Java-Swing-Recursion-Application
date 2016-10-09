@@ -7,7 +7,7 @@
  * @author Yu-Hsiang Huang
  */
 public class Point {
-	private final int x;
+	private final int x; 
 	private final int y;
 	public Point(int x, int y) {
 		super();
