@@ -19,6 +19,7 @@ public class ShapeContainer {
 	enum ADIR{INC, DEC};
 	private ADIR aDir;
 	private RecursionProgram.SHAPES shape;
+	public static final int SquareRadius = 10;
 	
 	public ShapeContainer() {//actual data for the shapes
 		colorChange = true;	
@@ -27,6 +28,7 @@ public class ShapeContainer {
 		radius = 150;
 		rotation = 45;
 		recurseFactor = 2;
+		this.SquareRadius = SquareRadius;
 		aDir = ADIR.DEC;
 		shape = RecursionProgram.SHAPES.Polygon;
 		rebuild();
@@ -68,11 +70,15 @@ public class ShapeContainer {
 		
 		}
 		baseShape.recurseShape(baseShape);
-
 	}
+
+	
 	public void paintComponents(Graphics2D g) {
 		baseShape.paintComponent(g);
 	}
+	/*
+		Appropriate getters and setters needed for the arguments of each shape's methods.  
+	*/
 	public void setColorChange(boolean change){
 		this.colorChange = change;
 	}
