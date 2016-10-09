@@ -1,20 +1,3 @@
-
-/*
- * Driver program for the recursion lab.
- *
- * Is the GUI and main executable for the application. 
- * 
- * Holds a ShapeContainer class, which acts on all the settings and holds 
- * the base GraphicShape instance.    
- * 
- * Holds an Animation class which will animate the current shape if
- * started in a Thread. 
- *
- * @author Karl Nicholas
- * @author Calvin Lee
- * @author Yu-Hsiang Huang
- */
-
 import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -27,8 +10,21 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener; 
 
-@SuppressWarnings("serial")
+/**
+ * <p>Driver program for the recursion lab.</p>
+ * <p>Is the GUI and main executable for the application.</p> 
+ * <p>Holds a ShapeContainer class, which acts on all the settings and holds 
+ * the base GraphicShape instance.</p>    
+ * <p>Holds an Animation class which will animate the current shape if
+ * started in a Thread.</p> 
+ *
+ * @author Karl Nicholas
+ * @author Calvin Lee
+ * @author Yu-Hsiang Huang
+ */
+
 public class RecursionProgram extends JFrame implements ActionListener {
+	private static final long serialVersionUID = 1L;
 	private JCheckBox colorChange;
 	private JComboBox<COLORS> chooseColors;
 	private JComboBox<Integer> chooseSides;
@@ -98,6 +94,8 @@ public class RecursionProgram extends JFrame implements ActionListener {
 		drawingPanel.repaint();
 	}
 	private class DrawingPanel extends JPanel {
+		private static final long serialVersionUID = 1L;
+
 		protected void paintComponent(Graphics g) {
 		    super.paintComponent(g);
 		    if( shapeContainer != null ) shapeContainer.paintComponents((Graphics2D)g);
