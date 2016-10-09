@@ -50,22 +50,22 @@ public interface GraphicShape {
 	/** To set the point of the shape
 	    @param i 
 	    	The integer is the index of VertixShape.
-	    @param g 
+	    @param p 
 	    	The object to get the method in GraphicShape interface*/
 	public void setVertixShape(int i, GraphicShape p);
 	
 	/** A new GraphicShape method take those param for a new shape.
-	    @param color	
-	    	@return color.
-	    @param sides, Point center		
-	    	@return the side and point center of the new shape
-	    @param radius	
-	    	@return the radius of the new shape
-	    @param rotation	
-	    	@return the rotation of the new shape
-	    @param recursionFactor	
-	    	@return the recursionFactor of the new shape*/
-	public GraphicShape newShape(boolean change,Color color, int sides, Point center, int radius, double rotation, double recursionFactor, int counter);
+	    @param change whether to have counter based color change
+	    @param color color.
+	    @param sides no. of sides 
+	    @param center Point of the new shape
+	    @param radius of the new shape
+	    @param rotation	of the new shape
+	    @param recursionFactor of the new shape
+	    @param counter recursion count
+	    @return GraphicShape newShape 
+	*/
+	public GraphicShape newShape(boolean change, Color color, int sides, Point center, int radius, double rotation, double recursionFactor, int counter);
 	/** Gives back the counter/current iteration of the recursive call
 		@return Returns the counter. 
 	*/
