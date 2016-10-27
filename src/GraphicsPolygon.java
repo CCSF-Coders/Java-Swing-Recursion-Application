@@ -22,6 +22,8 @@ public class GraphicsPolygon extends GraphicsBaseclass {
 		int[] xVertices = new int[sides];
 		int[] yVertices = new int[sides];
 
+		rotation = rotation * (counter+1);
+		
 		for (int s = 0; s < sides; ++s) {
 			xVertices[s] = (int) (center.getX() - (Math.cos((double) s * slice + rotation) * radius));
 			yVertices[s] = (int) (center.getY() - (Math.sin((double) s * slice + rotation) * radius));
